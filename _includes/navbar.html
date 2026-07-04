@@ -1,10 +1,12 @@
 <header class="site-header">
-
   <div class="container">
 
     <nav class="navbar" aria-label="Primary">
 
-      <a class="navbar__brand" href="{{ '/' | relative_url }}">
+      <a
+        href="{{ '/' | relative_url }}"
+        class="navbar__brand"
+        aria-label="Care for Knowledge Fellowship Home">
 
         <img
           src="{{ '/assets/images/logo.png' | relative_url }}"
@@ -15,9 +17,10 @@
 
       <button
         class="navbar__toggle"
+        type="button"
         aria-expanded="false"
         aria-controls="primary-navigation"
-        aria-label="Open menu">
+        aria-label="Open navigation menu">
 
         <svg
           class="navbar__toggle-icon"
@@ -26,53 +29,72 @@
 
           <line
             class="line line1"
-            x1="4"
-            y1="7"
-            x2="20"
-            y2="7" />
+            x1="3"
+            y1="6"
+            x2="21"
+            y2="6" />
 
           <line
             class="line line2"
-            x1="4"
+            x1="3"
             y1="12"
-            x2="20"
+            x2="21"
             y2="12" />
 
           <line
             class="line line3"
-            x1="4"
-            y1="17"
-            x2="20"
-            y2="17" />
+            x1="3"
+            y1="18"
+            x2="21"
+            y2="18" />
 
         </svg>
 
       </button>
 
-      <ul
-        id="primary-navigation"
-        class="navbar__links">
+      <div
+        class="navbar__menu"
+        id="primary-navigation">
 
-        <li><a href="#about">About</a></li>
+        <ul class="navbar__links">
 
-        <li><a href="#journey">Journey</a></li>
+          <li>
+            <a href="#about">
+              About
+            </a>
+          </li>
 
-        <li><a href="#tracks">Tracks</a></li>
+          <li>
+            <a href="#journey">
+              Journey
+            </a>
+          </li>
 
-        <li><a href="#faq">FAQ</a></li>
+          <li>
+            <a href="#tracks">
+              Tracks
+            </a>
+          </li>
 
-      </ul>
+          <li>
+            <a href="#faq">
+              FAQ
+            </a>
+          </li>
 
-      <a
-        href="/apply/"
-        class="button button-primary">
+        </ul>
 
-        Apply
+        <a
+          href="/apply/"
+          class="button button-primary navbar__cta">
 
-      </a>
+          Apply
+
+        </a>
+
+      </div>
 
     </nav>
 
   </div>
-
 </header>
