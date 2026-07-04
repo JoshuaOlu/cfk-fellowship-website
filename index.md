@@ -1,9 +1,5 @@
 ---
-layout: default
+layout: home
 title: CFK Fellowship
-description: Build educational opportunities. Grow with purpose.
+description: Grow by building educational opportunities.
 ---
-
-# Hello, CFK Fellowship
-
-Our new website is under construction.
