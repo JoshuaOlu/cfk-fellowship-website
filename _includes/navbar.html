@@ -1,5 +1,78 @@
-<nav>
-  <a href="{{ '/' | relative_url }}">
-    CFK Fellowship
-  </a>
-</nav>
+<header class="site-header">
+
+  <div class="container">
+
+    <nav class="navbar" aria-label="Primary">
+
+      <a class="navbar__brand" href="{{ '/' | relative_url }}">
+
+        <img
+          src="{{ '/assets/images/logo.png' | relative_url }}"
+          alt="Care for Knowledge Fellowship"
+          class="navbar__logo">
+
+      </a>
+
+      <button
+        class="navbar__toggle"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open menu">
+
+        <svg
+          class="navbar__toggle-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+
+          <line
+            class="line line1"
+            x1="4"
+            y1="7"
+            x2="20"
+            y2="7" />
+
+          <line
+            class="line line2"
+            x1="4"
+            y1="12"
+            x2="20"
+            y2="12" />
+
+          <line
+            class="line line3"
+            x1="4"
+            y1="17"
+            x2="20"
+            y2="17" />
+
+        </svg>
+
+      </button>
+
+      <ul
+        id="primary-navigation"
+        class="navbar__links">
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#journey">Journey</a></li>
+
+        <li><a href="#tracks">Tracks</a></li>
+
+        <li><a href="#faq">FAQ</a></li>
+
+      </ul>
+
+      <a
+        href="/apply/"
+        class="button button-primary">
+
+        Apply
+
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
