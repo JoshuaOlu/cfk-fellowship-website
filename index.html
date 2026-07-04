@@ -242,13 +242,14 @@
     }
 
     .hero-h1 {
-      
-      font-size: clamp(44px, 6.5vw, 84px);
-      font-weight: 800;
-      line-height: 1.0;
-      color: var(--white);
-      max-width: 780px;
-      margin-bottom: 28px;
+        /* font-family: 'Syne', sans-serif; */
+        /* Old: clamp(44px, 6.5vw, 84px) */
+        font-size: clamp(36px, 5.5vw, 60px); 
+        font-weight: 800;
+        line-height: 1.1; /* Bumping this slightly to 1.1 keeps smaller text from looking choked */
+        color: var(--white);
+        max-width: 780px;
+        margin-bottom: 24px; /* Slightly reduced spacing below it too */
     }
 
     .hero-h1 .italic { font-style: italic; color: var(--cyan); }
