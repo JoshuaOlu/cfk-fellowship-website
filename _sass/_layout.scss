@@ -1,0 +1,99 @@
+/* ==========================================
+   LAYOUT
+========================================== */
+
+.container {
+  width: min(calc(100% - 2rem), var(--container-width));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+
+.section--sm {
+  padding-block: 4rem;
+}
+
+.section--lg {
+  padding-block: 10rem;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+
+/* ==========================================
+   SECTION HEADER
+========================================== */
+
+.section-header {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.section-header__eyebrow {
+  display: inline-block;
+
+  margin-bottom: .75rem;
+
+  font-size: .875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+
+  color: var(--color-primary);
+}
+
+.section-header__title {
+  margin-bottom: 1rem;
+}
+
+.section-header__description {
+  margin-inline: auto;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (min-width: 768px) {
+
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
