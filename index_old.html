@@ -192,49 +192,36 @@
     .what-card-body { font-size: 15px; line-height: 1.68; color: var(--muted); }
     .tracks-section { background: var(--navy); }
     .tracks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; }
-    
-    /* Interactive track links styling */
-    .track-link { display: block; height: 100%; text-decoration: none; }
-    .track { background: rgba(255,255,255,0.045); padding: 40px 36px; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
-    .track:hover { background: rgba(11,236,214,0.08); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-    .track-icon-img { height: 40px; width: auto; margin-bottom: 18px; display: block; object-fit: contain; }
-    .track-name { font-size: 21px; font-weight: 700; color: var(--white); margin-bottom: 10px; text-align: left; }
-    .track-desc { font-size: 14px; line-height: 1.68; color: rgba(255,255,255,0.52); margin-bottom: 18px; text-align: left; }
-    .track-pill { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); border: 1px solid rgba(11,236,214,0.28); padding: 4px 11px; margin-top: auto; }
-    
+    .track { background: rgba(255,255,255,0.045); padding: 40px 36px; transition: background 0.25s; }
+    .track:hover { background: rgba(11,236,214,0.08); }
+    .track-icon { font-size: 30px; margin-bottom: 18px; display: block; }
+    .track-name { font-size: 21px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .track-desc { font-size: 14px; line-height: 1.68; color: rgba(255,255,255,0.52); margin-bottom: 18px; }
+    .track-pill { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); border: 1px solid rgba(11,236,214,0.28); padding: 4px 11px; }
     .journey-section { background: var(--white); }
     .journey-list { display: flex; flex-direction: column; max-width: 760px; margin-top: 48px; }
     .journey-item { display: grid; grid-template-columns: 108px 3px 1fr; gap: 0 28px; padding-bottom: 0; }
     .journey-marker { text-align: right; padding-top: 6px; padding-bottom: 40px; }
     .journey-phase { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
     .journey-time { font-size: 24px; font-weight: 800; color: var(--navy); line-height: 1; }
-    
-    /* Journey line design for programmatic fill trace */
     .journey-line { width: 3px; background: var(--border); position: relative; }
-    .journey-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--cyan); transition: height 0.1s linear; }
-    .journey-line::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 11px; height: 11px; border-radius: 50%; background: var(--border); border: 2px solid var(--white); z-index: 2; transition: background 0.3s; }
-    .journey-item.active-trace .journey-line::before { background: var(--cyan); }
+    .journey-line::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 11px; height: 11px; border-radius: 50%; background: var(--border); border: 2px solid var(--white); }
+    .journey-item.highlight .journey-line { background: var(--cyan); }
+    .journey-item.highlight .journey-line::before { background: var(--cyan); }
     .journey-item.highlight .journey-time { color: var(--pink); }
     .journey-item:last-child .journey-line { background: linear-gradient(to bottom, var(--border), transparent); }
-    .journey-item:last-child .journey-line-fill { display: none; }
-    
     .journey-body { padding-top: 2px; padding-bottom: 40px; }
     .journey-name { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .journey-desc { font-size: 15px; line-height: 1.68; color: var(--muted); }
     .calendar-section { background: var(--navy); padding: 80px 0; }
     .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 40px; }
-    .calendar-card { background: rgba(255,255,255,0.05); padding: 36px; height: 100%; transition: background 0.25s, transform 0.25s; }
+    .calendar-card { background: rgba(255,255,255,0.05); padding: 36px; }
     .calendar-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
     .calendar-card-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
     .calendar-card-dates { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 12px; }
     .calendar-card-note { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.55; }
-    
-    /* Interactive structures for Autumn Cohort card click */
-    .calendar-link { display: block; text-decoration: none; }
     .calendar-card.open { background: rgba(255,27,162,0.12); border: 1px solid rgba(255,27,162,0.3); }
     .calendar-card.open .calendar-card-label { color: var(--pink); }
-    .calendar-link:hover .calendar-card.open { background: rgba(255,27,162,0.2); transform: translateY(-2px); }
-    
     .gain-section { background: var(--off); }
     .gain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
     .gain-card { background: var(--white); padding: 36px 32px; }
@@ -273,26 +260,6 @@
     .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.8); }
     .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
-
-    /* ===================== ANIMATION STYLES ===================== */
-    .announcement strong, .cta-deadline, .hero-deadline strong {
-      display: inline-block;
-      animation: bar-pulse 2.5s infinite ease-in-out;
-    }
-    @keyframes bar-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.9; transform: scale(1.03); }
-    }
-    
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     /* ===================== RESPONSIVE ===================== */
     @media (max-width: 900px) {
@@ -333,10 +300,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .ticker-track { animation: none; }
-      .announcement strong, .cta-deadline, .hero-deadline strong { animation: none; }
-      .animate-on-scroll { opacity: 1; transform: none; transition: none; }
-      .track:hover { transform: none; box-shadow: none; }
-      .calendar-link:hover .calendar-card.open { transform: none; }
     }
   </style>
 </head>
@@ -376,10 +339,10 @@
           <a href="https://fellowship.careforknowledge.org/assets/downloads/cfk-fellowship-companion.pdf" class="btn-ghost" aria-label="Read the CFK Fellowship Companion document">Read the Fellowship Companion</a>
         </div>
         <div class="hero-stats" role="list" aria-label="Fellowship at a glance">
-          <div class="hero-stat" role="listitem"><div class="hero-stat-num" data-count="4">0</div><div class="hero-stat-label">Fellowship Levels</div></div>
-          <div class="hero-stat" role="listitem"><div class="hero-stat-num" data-count="16">0</div><div class="hero-stat-label">Week Foundation Cohort</div></div>
-          <div class="hero-stat" role="listitem"><div class="hero-stat-num" data-count="2">0</div><div class="hero-stat-label">Cohorts Per Year</div></div>
-          <div class="hero-stat" role="listitem"><div class="hero-stat-num" data-count="4">0</div><div class="hero-stat-label">Tracks to Join</div></div>
+          <div class="hero-stat" role="listitem"><div class="hero-stat-num">4</div><div class="hero-stat-label">Fellowship Levels</div></div>
+          <div class="hero-stat" role="listitem"><div class="hero-stat-num">16</div><div class="hero-stat-label">Week Foundation Cohort</div></div>
+          <div class="hero-stat" role="listitem"><div class="hero-stat-num">2</div><div class="hero-stat-label">Cohorts Per Year</div></div>
+          <div class="hero-stat" role="listitem"><div class="hero-stat-num">4</div><div class="hero-stat-label">Tracks to Join</div></div>
         </div>
       </div>
     </div>
@@ -400,7 +363,7 @@
       <span class="ticker-item">Admin &amp; Support</span><span class="ticker-sep">✦</span>
     </div>
   </div>
-  <section class="what-section section animate-on-scroll" id="about" aria-labelledby="what-heading">
+  <section class="what-section section" id="about" aria-labelledby="what-heading">
     <div class="inner">
       <div class="eyebrow">What is the CFK Fellowship</div>
       <h2 class="sh" id="what-heading">Not a programme. A community you grow into.</h2>
@@ -413,48 +376,20 @@
       </div>
     </div>
   </section>
-  <section class="tracks-section section animate-on-scroll" id="tracks" aria-labelledby="tracks-heading">
+  <section class="tracks-section section" id="tracks" aria-labelledby="tracks-heading">
     <div class="inner">
       <div class="eyebrow eyebrow-cyan">Where You Will Contribute</div>
       <h2 class="sh sh-light" id="tracks-heading">Find the track that fits you.</h2>
       <p class="sb sb-light">Every Fellow works within one of four tracks. Read each one carefully and think about where your skills and interests belong.</p>
       <div class="tracks-grid">
-        <a href="https://wikiquestions.org" class="track-link" target="_blank" rel="noopener noreferrer">
-          <article class="track">
-            <img src="assets/images/icons/icon-wikiquestions_96x96.png" class="track-icon-img" alt="WikiQuestions Logo" aria-hidden="true">
-            <h3 class="track-name">WikiQuestions</h3>
-            <p class="track-desc">Digitise and publish past SSCE examination questions on wikiquestions.org, making them freely searchable and accessible to students across Nigeria. A laptop is a firm requirement for this track.</p>
-            <span class="track-pill">Laptop Required</span>
-          </article>
-        </a>
-        <a href="https://ctri.ng" class="track-link" target="_blank" rel="noopener noreferrer">
-          <article class="track">
-            <img src="assets/images/icons/icon-ctri_48x48.svg" class="track-icon-img" alt="CTRI Logo" aria-hidden="true">
-            <h3 class="track-name">CTRI</h3>
-            <p class="track-desc">Write free, openly available textbooks for Nigerian secondary school students preparing for WAEC, JAMB, and NECO. Currently focused on Mathematics, Physics, Biology, Chemistry, and Agric Science.</p>
-            <span class="track-pill">Textbook Writing</span>
-          </article>
-        </a>
-        <a href="https://modelnass.ng" class="track-link" target="_blank" rel="noopener noreferrer">
-          <article class="track">
-            <img src="assets/images/icons/icon-modelnass_96x96.png" class="track-icon-img" alt="Model NASS Logo" aria-hidden="true">
-            <h3 class="track-name">Model National Assembly</h3>
-            <p class="track-desc">Help plan and run a high-fidelity legislative simulation set in the fictional Federal Republic of Mona. Designed to educate young Nigerians about governance, ethics, and civic responsibility.</p>
-            <span class="track-pill">Events and Programme</span>
-          </article>
-        </a>
-        <a href="https://fellowship.careforknowledge.org" class="track-link" target="_blank" rel="noopener noreferrer">
-          <article class="track">
-            <img src="assets/images/icons/icon-admin_96x96.png" class="track-icon-img" alt="Admin and Support Logo" aria-hidden="true">
-            <h3 class="track-name">Admin and Support</h3>
-            <p class="track-desc">Keep everything running. Roles here span administration, finance, fundraising, social media, graphic design, video editing, and more. If your skills serve CFK's mission but do not fit neatly into the other three tracks, this is where you belong.</p>
-            <span class="track-pill">Multiple Roles</span>
-          </article>
-        </a>
+        <article class="track"><span class="track-icon" aria-hidden="true">📝</span><h3 class="track-name">WikiQuestions</h3><p class="track-desc">Digitise and publish past SSCE examination questions on wikiquestions.org, making them freely searchable and accessible to students across Nigeria. A laptop is a firm requirement for this track.</p><span class="track-pill">Laptop Required</span></article>
+        <article class="track"><span class="track-icon" aria-hidden="true">📗</span><h3 class="track-name">CTRI</h3><p class="track-desc">Write free, openly available textbooks for Nigerian secondary school students preparing for WAEC, JAMB, and NECO. Currently focused on Mathematics, Physics, Biology, Chemistry, and Agric Science.</p><span class="track-pill">Textbook Writing</span></article>
+        <article class="track"><span class="track-icon" aria-hidden="true">🏛️</span><h3 class="track-name">Model National Assembly</h3><p class="track-desc">Help plan and run a high-fidelity legislative simulation set in the fictional Federal Republic of Mona. Designed to educate young Nigerians about governance, ethics, and civic responsibility.</p><span class="track-pill">Events and Programme</span></article>
+        <article class="track"><span class="track-icon" aria-hidden="true">⚙️</span><h3 class="track-name">Admin and Support</h3><p class="track-desc">Keep everything running. Roles here span administration, finance, fundraising, social media, graphic design, video editing, and more. If your skills serve CFK's mission but do not fit neatly into the other three tracks, this is where you belong.</p><span class="track-pill">Multiple Roles</span></article>
       </div>
     </div>
   </section>
-  <section class="journey-section section animate-on-scroll" id="journey" aria-labelledby="journey-heading">
+  <section class="journey-section section" id="journey" aria-labelledby="journey-heading">
     <div class="inner">
       <div class="eyebrow">The Fellowship Journey</div>
       <h2 class="sh" id="journey-heading">Where you start, and how far you can go.</h2>
@@ -462,45 +397,43 @@
       <div class="journey-list" role="list">
         <div class="journey-item highlight" role="listitem">
           <div class="journey-marker"><div class="journey-phase">Start Here</div><div class="journey-time">16 wks</div></div>
-          <div class="journey-line" aria-hidden="true"><div class="journey-line-fill"></div></div>
+          <div class="journey-line" aria-hidden="true"></div>
           <div class="journey-body"><h3 class="journey-name">Foundation Cohort</h3><p class="journey-desc">The most intensive phase of your Fellowship. You are active within your track, attending workshops, Light Sessions, and weekly reflections. Fellows who complete this phase with genuine participation receive the CFK Foundation Cohort Certificate. At the end, you decide whether to continue.</p></div>
         </div>
         <div class="journey-item" role="listitem">
           <div class="journey-marker"><div class="journey-phase">Level 1</div><div class="journey-time">6 mo</div></div>
-          <div class="journey-line" aria-hidden="true"><div class="journey-line-fill"></div></div>
+          <div class="journey-line" aria-hidden="true"></div>
           <div class="journey-body"><h3 class="journey-name">Foundation Fellow</h3><p class="journey-desc">Fellows who continue after the cohort remain at Foundation level for the rest of their minimum six months. Teams, bi-monthly Light Sessions, and your first Advancement Portfolio.</p></div>
         </div>
         <div class="journey-item" role="listitem">
           <div class="journey-marker"><div class="journey-phase">Level 2</div><div class="journey-time">12 mo</div></div>
-          <div class="journey-line" aria-hidden="true"><div class="journey-line-fill"></div></div>
+          <div class="journey-line" aria-hidden="true"></div>
           <div class="journey-body"><h3 class="journey-name">Associate Fellow</h3><p class="journey-desc">Consistent contribution, growing ownership, and emerging leadership. You take on more within your team and begin to support newer Fellows around you.</p></div>
         </div>
         <div class="journey-item" role="listitem">
           <div class="journey-marker"><div class="journey-phase">Level 3</div><div class="journey-time">18 mo</div></div>
-          <div class="journey-line" aria-hidden="true"><div class="journey-line-fill"></div></div>
+          <div class="journey-line" aria-hidden="true"></div>
           <div class="journey-body"><h3 class="journey-name">Senior Fellow</h3><p class="journey-desc">Strategic contribution, people development, and sustained impact. Senior Fellows are eligible for a Sabbatical to pursue a personal, impact-driven project outside CFK.</p></div>
         </div>
         <div class="journey-item" role="listitem">
           <div class="journey-marker"><div class="journey-phase">Level 4</div><div class="journey-time">No limit</div></div>
-          <div class="journey-line" aria-hidden="true"><div class="journey-line-fill"></div></div>
+          <div class="journey-line" aria-hidden="true"></div>
           <div class="journey-body"><h3 class="journey-name">Principal Fellow</h3><p class="journey-desc">The highest level. A record of sustained leadership and long-term commitment to CFK's mission. Principal Fellows who eventually step away are honoured through a Distinguished Exit.</p></div>
         </div>
       </div>
     </div>
   </section>
-  <section class="calendar-section animate-on-scroll" id="cohorts" aria-labelledby="cohort-heading">
+  <section class="calendar-section" id="cohorts" aria-labelledby="cohort-heading">
     <div class="inner">
       <div class="eyebrow eyebrow-cyan">Fellowship Calendar</div>
       <h2 class="sh sh-light" id="cohort-heading">Two cohorts per year.</h2>
       <div class="calendar-grid">
         <div class="calendar-card"><div class="calendar-card-label">Spring Cohort</div><div class="calendar-card-name">Spring 2027</div><div class="calendar-card-dates">February to May</div><div class="calendar-card-note">Applications typically open in January. Join our mailing list to be notified when they open.</div></div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="calendar-link" target="_blank" rel="noopener noreferrer">
-          <div class="calendar-card open"><div class="calendar-card-label">Now Open — Autumn Cohort</div><div class="calendar-card-name">Autumn 2026</div><div class="calendar-card-dates">August to November</div><div class="calendar-card-note">Applications are open now. The deadline is July 20, 2026. Do not wait until the last week.</div></div>
-        </a>
+        <div class="calendar-card open"><div class="calendar-card-label">Now Open — Autumn Cohort</div><div class="calendar-card-name">Autumn 2026</div><div class="calendar-card-dates">August to November</div><div class="calendar-card-note">Applications are open now. The deadline is July 20, 2026. Do not wait until the last week.</div></div>
       </div>
     </div>
   </section>
-  <section class="gain-section section animate-on-scroll" id="gain" aria-labelledby="gain-heading">
+  <section class="gain-section section" id="gain" aria-labelledby="gain-heading">
     <div class="inner">
       <div class="eyebrow">What Fellows Gain</div>
       <h2 class="sh" id="gain-heading">Not automatic. Earned through genuine engagement.</h2>
@@ -515,11 +448,11 @@
       </div>
     </div>
   </section>
-  <div class="photo-band animate-on-scroll" role="presentation" aria-hidden="true">
+  <div class="photo-band" role="presentation" aria-hidden="true">
     <img src="assets/images/fellows-work.jpg" alt="CFK Fellows collaborating during a sprint session" loading="lazy">
     <div class="photo-band-overlay"><div class="photo-band-text">Built by young Nigerians.<br><span>For every student.</span></div></div>
   </div>
-  <section class="companion-section animate-on-scroll" id="companion" aria-labelledby="companion-heading">
+  <section class="companion-section" id="companion" aria-labelledby="companion-heading">
     <div class="inner">
       <div class="companion-inner">
         <div>
@@ -537,7 +470,7 @@
       </div>
     </div>
   </section>
-  <section class="cta-section animate-on-scroll" id="apply" aria-labelledby="cta-heading">
+  <section class="cta-section" id="apply" aria-labelledby="cta-heading">
     <h2 class="cta-heading" id="cta-heading">Ready to show up<br>for something real?</h2>
     <p class="cta-sub">Applications for the 2026 Autumn Cohort are open now. The process is warm, not intimidating, and takes about 15 minutes.</p>
     <div class="cta-deadline" role="alert" aria-live="polite">Deadline: July 20, 2026</div>
@@ -557,76 +490,5 @@
       <div class="footer-tagline">Learn. Share. Care. ✦</div>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // 1. STAT COUNTER EFFECT
-      const counters = document.querySelectorAll(".hero-stat-num");
-      counters.forEach(counter => {
-        const target = +counter.getAttribute("data-count");
-        let count = 0;
-        const duration = 1200; // Total ms animation duration
-        const increment = target / (duration / 16); // 16ms approx frame rate
-
-        const updateCount = () => {
-          count += increment;
-          if (count < target) {
-            counter.innerText = Math.floor(count);
-            setTimeout(updateCount, 16);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-
-      // 2. FADE-IN ON SCROLL EFFECT
-      const observerOptions = {
-        root: null,
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-      };
-
-      const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".animate-on-scroll").forEach(sec => {
-        scrollObserver.observe(sec);
-      });
-
-      // 3. DYNAMIC JOURNEY LINE TRACE DRAW EFFECT
-      const journeyItems = document.querySelectorAll(".journey-item");
-      const traceJourneyLine = () => {
-        const triggerPoint = window.innerHeight * 0.75;
-        
-        journeyItems.forEach((item) => {
-          const rect = item.getBoundingClientRect();
-          const lineFill = item.querySelector(".journey-line-fill");
-          
-          if (rect.top < triggerPoint) {
-            item.classList.add("active-trace");
-            if (lineFill) {
-              const totalHeight = rect.height;
-              const scrolledPastItem = triggerPoint - rect.top;
-              const percentage = Math.min(Math.max((scrolledPastItem / totalHeight) * 100, 0), 100);
-              lineFill.style.height = percentage + "%";
-            }
-          } else {
-            item.classList.remove("active-trace");
-            if (lineFill) lineFill.style.height = "0%";
-          }
-        });
-      };
-
-      window.addEventListener("scroll", traceJourneyLine);
-      traceJourneyLine(); // Run initial check
-    });
-  </script>
 </body>
 </html>
