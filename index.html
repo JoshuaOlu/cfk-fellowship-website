@@ -75,12 +75,18 @@
     a { text-decoration: none; }
     .inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
     @media (max-width: 768px) { .inner { padding: 0 24px; } }
-    .nav {
+    
+    /* Fixed Header Wrapper */
+    .fixed-header {
       position: fixed;
-      /* Shift the nav bar down by 41px so it sits perfectly below the announcement banner */
-      top: 41px; 
-      left: 0; right: 0;
-      z-index: 200;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav {
       background: var(--navy);
       display: flex;
       align-items: center;
@@ -117,18 +123,13 @@
       background: var(--pink);
       text-align: center;
       padding: 11px 24px;
-      /* Fix the banner to the very top of the viewport */
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 41px;
-      z-index: 201;
     }
     .announcement p { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; }
     .announcement a { color: var(--white); text-decoration: underline; margin-left: 8px; font-weight: 700; }
     .hero {
       background: var(--navy);
-      /* Add an extra 41px of padding to the top of the hero section so nothing is cut off underneath the new fixed layouts */
-      padding: 137px 0 80px; 
+      /* Increased padding to account for the new stacked header */
+      padding: 150px 0 80px; 
       position: relative;
       overflow: hidden;
       min-height: 92vh;
@@ -314,13 +315,15 @@
     @media (max-width: 600px) {
       .nav-back { display: none; }
       section, .section, .section-sm { padding: 72px 0; }
-      .nav { top: 41px; }
       .nav-inner { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
       .nav-logo { font-size: 15px; flex: 1; }
       .nav-apply { font-size: 11px; padding: 8px 16px; letter-spacing: 0.08em; white-space: nowrap; }
       .announcement { margin-top: 0; }
       .announcement p { font-size: 12px; line-height: 1.5; }
-      .hero { padding-top: 73px; }
+      
+      /* Updated padding for mobile stacked header */
+      .hero { padding-top: 140px; } 
+      
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
       .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
       .hero-stat:nth-child(odd) { padding-right: 0; }
@@ -346,20 +349,24 @@
   </style>
 </head>
 <body>
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <div class="nav-logo">CFK <span>Fellowship</span></div>
-      <div class="nav-right">
-        <a href="https://careforknowledge.org" class="nav-back" aria-label="Back to Care for Knowledge main website">← careforknowledge.org</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="nav-apply" target="_blank" rel="noopener noreferrer" aria-label="Apply for the CFK Fellowship">Apply Now</a>
+  
+  <div class="fixed-header">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <div class="nav-logo">CFK <span>Fellowship</span></div>
+        <div class="nav-right">
+          <a href="https://careforknowledge.org" class="nav-back" aria-label="Back to Care for Knowledge main website">← careforknowledge.org</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="nav-apply" target="_blank" rel="noopener noreferrer" aria-label="Apply for the CFK Fellowship">Apply Now</a>
+        </div>
       </div>
+    </nav>
+    <div class="announcement" role="banner">
+      <p>Applications for the 2026 Autumn Cohort are open. Deadline: <strong>July 20, 2026.</strong>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Apply here.</a>
+      </p>
     </div>
-  </nav>
-  <div class="announcement" role="banner">
-    <p>Applications for the 2026 Autumn Cohort are open. Deadline: <strong>July 20, 2026.</strong>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Apply here.</a>
-    </p>
   </div>
+
   <header class="hero" role="banner">
     <div class="hero-bg" role="presentation" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
