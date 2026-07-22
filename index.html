@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CFK Fellowship — A Volunteer Fellowship for Young Nigerians | Care for Knowledge</title>
-  <meta name="description" content="The CFK Fellowship is a community of young Nigerians building free educational resources. Join a volunteer fellowship where real work, real growth, and real community come together. Applications for the 2026 Autumn Cohort close July 20.">
+  <meta name="description" content="The CFK Fellowship is a community of young Nigerians building free educational resources. Applications for the 2026 Autumn Cohort are now closed. Join the waitlist to be notified when the next cohort opens.">
   <meta name="keywords" content="volunteer fellowship Nigeria, CFK Fellowship, Care for Knowledge Fellowship, youth fellowship Nigeria, Nigerian volunteer programme, free education Nigeria, SSCE volunteer, WikiQuestions, CTRI Nigeria">
   <meta name="author" content="Care for Knowledge">
   <meta name="robots" content="index, follow">
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fellowship.careforknowledge.org/">
   <meta property="og:title" content="CFK Fellowship — Real Work. Real Growth. Real Community.">
-  <meta property="og:description" content="Join a community of young Nigerians building free educational resources. The CFK Fellowship is where real work, real growth, and lasting community come together. Applications close July 20.">
+  <meta property="og:description" content="Join a community of young Nigerians building free educational resources. Applications for the 2026 Autumn Cohort are now closed. Join the waitlist for the next cohort.">
   <meta property="og:image" content="https://fellowship.careforknowledge.org/assets/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://fellowship.careforknowledge.org/">
   <meta name="twitter:title" content="CFK Fellowship — Real Work. Real Growth. Real Community.">
-  <meta name="twitter:description" content="Join a community of young Nigerians building free educational resources. Applications for the 2026 Autumn Cohort close July 20.">
+  <meta name="twitter:description" content="Join a community of young Nigerians building free educational resources. Applications for the 2026 Autumn Cohort are now closed. Join the waitlist.">
   <meta name="twitter:image" content="https://fellowship.careforknowledge.org/assets/images/og-image.jpg">
   <script type="application/ld+json">
   {
@@ -49,7 +49,6 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -108,28 +107,47 @@
     .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-back { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-back:hover { color: rgba(255,255,255,0.85); }
-    .nav-apply {
-      background: var(--pink);
+    /* Closed state for nav button */
+    .nav-notify {
+      background: rgba(255,255,255,0.12);
       color: var(--white);
       font-weight: 700;
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 8px 16px;
-      transition: opacity 0.2s;
+      transition: background 0.2s;
       white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
     }
-    .nav-apply:hover { opacity: 0.88; }
+    .nav-notify:hover { background: rgba(255,255,255,0.2); }
+
+    /* Closed announcement bar — amber/warm tone to signal status change */
     .announcement {
-      background: var(--pink);
+      background: #1a1a2e;
+      border-bottom: 2px solid var(--cyan);
       text-align: center;
       padding: 11px 24px;
     }
-    .announcement p { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; }
-    .announcement a { color: var(--white); text-decoration: underline; margin-left: 8px; font-weight: 700; }
+    .announcement p { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.03em; }
+    .announcement .closed-badge {
+      display: inline-block;
+      background: rgba(11,236,214,0.15);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .announcement a { color: var(--cyan); text-decoration: underline; margin-left: 8px; font-weight: 700; }
+
     .hero {
       background: var(--navy);
-      /* Increased padding to account for the new stacked header */
       padding: 150px 0 80px; 
       position: relative;
       overflow: hidden;
@@ -167,13 +185,45 @@
     .hero-h1 { font-size: clamp(36px, 5.5vw, 60px); font-weight: 800; line-height: 1.1; color: var(--white); max-width: 780px; margin-bottom: 24px; }
     .hero-h1 .italic { font-style: italic; color: var(--cyan); }
     .hero-sub { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.62); max-width: 500px; margin-bottom: 44px; font-weight: 300; }
+
+    /* Updated hero CTAs for closed state */
     .hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 72px; }
-    .btn-pink { background: var(--pink); color: var(--white); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 36px; display: inline-block; transition: opacity 0.2s; }
-    .btn-pink:hover { opacity: 0.88; }
+    .btn-cyan {
+      background: var(--cyan);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      display: inline-block;
+      transition: opacity 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-cyan:hover { opacity: 0.88; }
     .btn-ghost { color: rgba(255,255,255,0.65); font-size: 14px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
     .btn-ghost:hover { color: var(--cyan); border-color: var(--cyan); }
-    .hero-deadline { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 10px 18px; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 56px; }
-    .hero-deadline strong { color: var(--pink); font-weight: 700; }
+
+    /* Closed status chip in hero */
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(11,236,214,0.3);
+      background: rgba(11,236,214,0.06);
+      padding: 10px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+    }
+    .hero-status .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--cyan);
+      opacity: 0.6;
+    }
+    .hero-status strong { color: var(--cyan); font-weight: 700; }
+
     .hero-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 48px; }
     .hero-stat { flex: 1; padding-right: 32px; }
     .hero-stat + .hero-stat { padding-left: 32px; border-left: 1px solid rgba(255,255,255,0.1); }
@@ -200,7 +250,6 @@
     .tracks-section { background: var(--navy); }
     .tracks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; }
     
-    /* Interactive track links styling */
     .track-link { display: block; height: 100%; text-decoration: none; }
     .track { background: rgba(255,255,255,0.045); padding: 40px 36px; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
     .track:hover { background: rgba(11,236,214,0.08); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
@@ -216,7 +265,6 @@
     .journey-phase { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
     .journey-time { font-size: 24px; font-weight: 800; color: var(--navy); line-height: 1; }
     
-    /* Journey line design for programmatic fill trace */
     .journey-line { width: 3px; background: var(--border); position: relative; }
     .journey-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--cyan); transition: height 0.1s linear; }
     .journey-line::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 11px; height: 11px; border-radius: 50%; background: var(--border); border: 2px solid var(--white); z-index: 2; transition: background 0.3s; }
@@ -235,12 +283,31 @@
     .calendar-card-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
     .calendar-card-dates { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 12px; }
     .calendar-card-note { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.55; }
-    
-    /* Interactive structures for Autumn Cohort card click */
-    .calendar-link { display: block; text-decoration: none; }
-    .calendar-card.open { background: rgba(255,27,162,0.12); border: 1px solid rgba(255,27,162,0.3); }
-    .calendar-card.open .calendar-card-label { color: var(--pink); }
-    .calendar-link:hover .calendar-card.open { background: rgba(255,27,162,0.2); transform: translateY(-2px); }
+
+    /* Closed cohort card styling */
+    .calendar-card.closed {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .calendar-card.closed::after {
+      content: 'CLOSED';
+      position: absolute;
+      top: 18px; right: -22px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.3);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      padding: 4px 36px;
+      transform: rotate(45deg);
+    }
+    .calendar-card.closed .calendar-card-name { color: rgba(255,255,255,0.45); }
+    .calendar-card.closed .calendar-card-dates { color: rgba(255,255,255,0.25); }
+
+    .calendar-card.open { background: rgba(11,236,214,0.07); border: 1px solid rgba(11,236,214,0.2); }
+    .calendar-card.open .calendar-card-label { color: var(--cyan); }
     
     .gain-section { background: var(--off); }
     .gain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
@@ -265,13 +332,169 @@
     .companion-point-icon { width: 36px; height: 36px; background: var(--off); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
     .companion-point-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
     .companion-point-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
-    .cta-section { background: var(--pink); padding: 100px 0; text-align: center; }
-    .cta-heading { font-size: clamp(36px, 5.5vw, 68px); font-weight: 800; color: var(--white); line-height: 1.05; margin-bottom: 20px; }
-    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.72); max-width: 460px; margin: 0 auto 16px; line-height: 1.65; }
-    .cta-deadline { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; margin-bottom: 40px; background: rgba(0,0,0,0.15); display: inline-block; padding: 8px 20px; }
-    .btn-white { background: var(--white); color: var(--pink); font-weight: 800; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; padding: 18px 48px; display: inline-block; transition: opacity 0.2s; }
-    .btn-white:hover { opacity: 0.92; }
-    .cta-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    /* ===================== NOTIFY SECTION ===================== */
+    .notify-section {
+      background: var(--navy);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .notify-section::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(11,236,214,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .notify-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .notify-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .notify-eyebrow::before, .notify-eyebrow::after {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--cyan); opacity: 0.4;
+    }
+    .notify-heading {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .notify-heading em { font-style: italic; color: var(--cyan); }
+    .notify-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .notify-form-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 40px 36px;
+    }
+    .notify-form-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+    }
+    .notify-input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-right: none;
+      color: var(--white);
+      font-family: 'Urbanist', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      padding: 15px 20px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .notify-input::placeholder { color: rgba(255,255,255,0.28); }
+    .notify-input:focus {
+      border-color: rgba(11,236,214,0.4);
+      background: rgba(255,255,255,0.1);
+    }
+    .notify-name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+    .notify-name-row .notify-input {
+      border-right: 1px solid rgba(255,255,255,0.14);
+      margin-bottom: 0;
+    }
+    .notify-name-row .notify-input:first-child {
+      border-right: none;
+    }
+    .notify-email-row {
+      display: flex;
+      gap: 0;
+      margin-top: 2px;
+    }
+    .notify-email-row .notify-input {
+      border-right: none;
+    }
+    .notify-btn {
+      background: var(--cyan);
+      color: var(--navy);
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 15px 28px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .notify-btn:hover { opacity: 0.88; }
+    .notify-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .notify-track-row {
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    .notify-track-row .notify-input {
+      width: 100%;
+      border-right: 1px solid rgba(255,255,255,0.14);
+      cursor: pointer;
+    }
+    .notify-track-row select.notify-input option {
+      background: #0d1a6b;
+      color: var(--white);
+    }
+
+    .notify-consent {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
+      line-height: 1.55;
+    }
+    .notify-success {
+      display: none;
+      text-align: center;
+      padding: 32px 0 8px;
+    }
+    .notify-success-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+    .notify-success-heading {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    .notify-success-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .notify-note {
+      margin-top: 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+    }
+    .notify-note a { color: rgba(255,255,255,0.45); text-decoration: underline; }
+
     footer { background: var(--navy); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-weight: 800; font-size: 16px; color: var(--white); }
@@ -282,15 +505,6 @@
     .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ===================== ANIMATION STYLES ===================== */
-    .announcement strong, .cta-deadline, .hero-deadline strong {
-      display: inline-block;
-      animation: bar-pulse 2.5s infinite ease-in-out;
-    }
-    @keyframes bar-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.9; transform: scale(1.03); }
-    }
-    
     .animate-on-scroll {
       opacity: 0;
       transform: translateY(20px);
@@ -311,6 +525,8 @@
       .hero-stats { flex-wrap: wrap; gap: 28px; }
       .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
       .journey-item { grid-template-columns: 80px 3px 1fr; }
+      .notify-name-row { grid-template-columns: 1fr; }
+      .notify-name-row .notify-input { border-right: 1px solid rgba(255,255,255,0.14); }
     }
 
     @media (max-width: 600px) {
@@ -318,34 +534,31 @@
       section, .section, .section-sm { padding: 72px 0; }
       .nav-inner { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
       .nav-logo { font-size: 15px; flex: 1; }
-      .nav-apply { font-size: 11px; padding: 8px 16px; letter-spacing: 0.08em; white-space: nowrap; }
-      .announcement { margin-top: 0; }
-      .announcement p { font-size: 12px; line-height: 1.5; }
-      
-      /* Updated padding for mobile stacked header */
+      .nav-notify { font-size: 11px; padding: 8px 16px; letter-spacing: 0.08em; white-space: nowrap; }
       .hero { padding-top: 140px; } 
-      
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
       .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
       .hero-stat:nth-child(odd) { padding-right: 0; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
-      .btn-pink { width: 100%; text-align: center; }
+      .btn-cyan { width: 100%; text-align: center; }
       .companion-inner { grid-template-columns: 1fr; gap: 40px; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; padding: 0 24px; }
       .footer-links { flex-wrap: wrap; gap: 16px; }
+      .notify-form-wrap { padding: 28px 20px; }
+      .notify-email-row { flex-direction: column; }
+      .notify-email-row .notify-input { border-right: 1px solid rgba(255,255,255,0.14); }
+      .notify-btn { width: 100%; margin-top: 2px; }
     }
 
     @media (max-width: 380px) {
       .nav-logo { font-size: 13px; }
-      .nav-apply { font-size: 10px; padding: 7px 12px; }
+      .nav-notify { font-size: 10px; padding: 7px 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .ticker-track { animation: none; }
-      .announcement strong, .cta-deadline, .hero-deadline strong { animation: none; }
       .animate-on-scroll { opacity: 1; transform: none; transition: none; }
       .track:hover { transform: none; box-shadow: none; }
-      .calendar-link:hover .calendar-card.open { transform: none; }
     }
   </style>
 </head>
@@ -354,18 +567,15 @@
   <div class="fixed-header">
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav-inner">
-        <!-- <div class="nav-logo">CFK <span>Fellowship</span></div> -->
         <img src="assets/images/cfk-logo-wordmark_1090x344.png" alt="CFK Fellowship Logo" style="height: 32px; width: auto;">
         <div class="nav-right">
           <a href="https://careforknowledge.org" class="nav-back" aria-label="Back to Care for Knowledge main website">← careforknowledge.org</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="nav-apply" target="_blank" rel="noopener noreferrer" aria-label="Apply for the CFK Fellowship">Apply Now</a>
+          <a href="#notify" class="nav-notify" aria-label="Get notified when the next cohort opens">Notify Me</a>
         </div>
       </div>
     </nav>
     <div class="announcement" role="banner">
-      <p>Applications for the 2026 Autumn Cohort are open. Deadline: <strong>July 20, 2026.</strong>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Apply here.</a>
-      </p>
+      <p><span class="closed-badge">Applications Closed</span> The 2026 Autumn Cohort is now full. <a href="#notify">Join the waitlist</a> to be first to know when the next cohort opens.</p>
     </div>
   </div>
 
@@ -383,10 +593,13 @@
       <div class="inner">
         <div class="hero-eyebrow">CFK Fellowship, Nigeria</div>
         <h1 class="hero-h1">Real work.<br>Real growth.<br><span class="italic">Real community.</span></h1>
-        <p class="hero-sub">The CFK Fellowship is a volunteer community for young Nigerians who want to do something that lasts. You will contribute to free educational resources, grow alongside people who genuinely care, and belong to a mission bigger than any single task.</p>
-        <div class="hero-deadline" aria-live="polite"><span>⏳</span><span>Applications close <strong>July 20, 2026</strong></span></div>
+        <p class="hero-sub">The CFK Fellowship is a volunteer community for young Nigerians who want to do something that lasts. Contribute to free educational resources, grow alongside people who genuinely care, and belong to a mission bigger than any single task.</p>
+        <div class="hero-status" aria-live="polite">
+          <span class="dot"></span>
+          <span>The <strong>2026 Autumn Cohort</strong> is now closed. The next cohort opens in early 2027.</span>
+        </div>
         <div class="hero-ctas">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="btn-pink" target="_blank" rel="noopener noreferrer" aria-label="Apply for the 2026 Autumn CFK Fellowship Cohort">Apply for the 2026 Cohort</a>
+          <a href="#notify" class="btn-cyan">Notify Me for Spring 2027</a>
           <a href="https://fellowship.careforknowledge.org/assets/downloads/cfk-fellowship-companion.pdf" class="btn-ghost" aria-label="Read the CFK Fellowship Companion document">Read the Fellowship Companion</a>
         </div>
         <div class="hero-stats" role="list" aria-label="Fellowship at a glance">
@@ -398,6 +611,7 @@
       </div>
     </div>
   </header>
+
   <div class="ticker" aria-label="Fellowship tracks" aria-hidden="true">
     <div class="ticker-track">
       <span class="ticker-item">WikiQuestions</span><span class="ticker-sep">✦</span>
@@ -414,6 +628,7 @@
       <span class="ticker-item">Admin &amp; Support</span><span class="ticker-sep">✦</span>
     </div>
   </div>
+
   <section class="what-section section animate-on-scroll" id="about" aria-labelledby="what-heading">
     <div class="inner">
       <div class="eyebrow">What is the CFK Fellowship</div>
@@ -427,6 +642,7 @@
       </div>
     </div>
   </section>
+
   <section class="tracks-section section animate-on-scroll" id="tracks" aria-labelledby="tracks-heading">
     <div class="inner">
       <div class="eyebrow eyebrow-cyan">Where You Will Contribute</div>
@@ -468,6 +684,7 @@
       </div>
     </div>
   </section>
+
   <section class="journey-section section animate-on-scroll" id="journey" aria-labelledby="journey-heading">
     <div class="inner">
       <div class="eyebrow">The Fellowship Journey</div>
@@ -502,18 +719,28 @@
       </div>
     </div>
   </section>
+
   <section class="calendar-section animate-on-scroll" id="cohorts" aria-labelledby="cohort-heading">
     <div class="inner">
       <div class="eyebrow eyebrow-cyan">Fellowship Calendar</div>
       <h2 class="sh sh-light" id="cohort-heading">Two cohorts per year.</h2>
       <div class="calendar-grid">
-        <div class="calendar-card"><div class="calendar-card-label">Spring Cohort</div><div class="calendar-card-name">Spring 2027</div><div class="calendar-card-dates">February to May</div><div class="calendar-card-note">Applications typically open in January. Join our mailing list to be notified when they open.</div></div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="calendar-link" target="_blank" rel="noopener noreferrer">
-          <div class="calendar-card open"><div class="calendar-card-label">Now Open — Autumn Cohort</div><div class="calendar-card-name">Autumn 2026</div><div class="calendar-card-dates">August to November</div><div class="calendar-card-note">Applications are open now. The deadline is July 20, 2026. Do not wait until the last week.</div></div>
-        </a>
+        <div class="calendar-card closed">
+          <div class="calendar-card-label">Autumn Cohort — Applications Closed</div>
+          <div class="calendar-card-name">Autumn 2026</div>
+          <div class="calendar-card-dates">August to November</div>
+          <div class="calendar-card-note">Applications for this cohort are now closed. Fellows have been selected. <a href="#notify" style="color: rgba(255,255,255,0.4); text-decoration: underline;">Join the waitlist</a> for the next one.</div>
+        </div>
+        <div class="calendar-card open">
+          <div class="calendar-card-label">Coming Next — Spring Cohort</div>
+          <div class="calendar-card-name">Spring 2027</div>
+          <div class="calendar-card-dates">February to May</div>
+          <div class="calendar-card-note">Applications will open in January 2027. <a href="#notify" style="color: var(--cyan); font-weight: 600;">Join the waitlist below</a> and we will email you the moment they do.</div>
+        </div>
       </div>
     </div>
   </section>
+
   <section class="gain-section section animate-on-scroll" id="gain" aria-labelledby="gain-heading">
     <div class="inner">
       <div class="eyebrow">What Fellows Gain</div>
@@ -529,17 +756,19 @@
       </div>
     </div>
   </section>
+
   <div class="photo-band animate-on-scroll" role="presentation" aria-hidden="true">
     <img src="assets/images/fellows-work.jpg" alt="CFK Fellows collaborating during a sprint session" loading="lazy">
     <div class="photo-band-overlay"><div class="photo-band-text">Built by young Nigerians.<br><span>For every student.</span></div></div>
   </div>
+
   <section class="companion-section animate-on-scroll" id="companion" aria-labelledby="companion-heading">
     <div class="inner">
       <div class="companion-inner">
         <div>
           <div class="companion-label">Before You Apply</div>
           <h2 class="companion-heading" id="companion-heading">Read the Fellowship Companion first.</h2>
-          <p class="companion-body">The CFK Fellowship Companion is a document we wrote with genuine care. It tells you everything about how the Fellowship works, what you can expect from us, and what we will expect from you. We recommend reading it before you apply.</p>
+          <p class="companion-body">The CFK Fellowship Companion is a document we wrote with genuine care. It tells you everything about how the Fellowship works, what you can expect from us, and what we will expect from you. We recommend reading it before the next applications open.</p>
           <a href="https://fellowship.careforknowledge.org/assets/downloads/cfk-fellowship-companion.pdf" class="btn-navy" aria-label="Read the CFK Fellowship Companion">Read the Companion</a>
         </div>
         <div class="companion-points">
@@ -551,17 +780,99 @@
       </div>
     </div>
   </section>
-  <section class="cta-section animate-on-scroll" id="apply" aria-labelledby="cta-heading">
-    <h2 class="cta-heading" id="cta-heading">Ready to show up<br>for something real?</h2>
-    <p class="cta-sub">Applications for the 2026 Autumn Cohort are open now. The process is warm, not intimidating, and takes about 15 minutes.</p>
-    <div class="cta-deadline" role="alert" aria-live="polite">Deadline: July 20, 2026</div>
-    <br><br>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS5Rz867zU421vjfa7taWwzSapnFlUBXDg68SYpyUPvCxmzA/viewform?usp=sf_link" class="btn-white" target="_blank" rel="noopener noreferrer" aria-label="Apply for the 2026 Autumn CFK Fellowship Cohort">Apply Now</a>
-    <div class="cta-note">Not sure yet? <a href="https://fellowship.careforknowledge.org/assets/downloads/cfk-fellowship-companion.pdf" style="color:rgba(255,255,255,0.85);text-decoration:underline;">Read the Fellowship Companion</a> first.</div>
+
+  <!-- ============ NOTIFY / WAITLIST SECTION ============ -->
+  <section class="notify-section animate-on-scroll" id="notify" aria-labelledby="notify-heading">
+    <div class="notify-inner">
+      <div class="notify-eyebrow">Spring 2027 Cohort</div>
+      <h2 class="notify-heading" id="notify-heading">Be the <em>first to know</em><br>when applications open.</h2>
+      <p class="notify-sub">The 2026 Autumn Cohort is full. Leave your details below and we will email you the moment Spring 2027 applications open — before we announce it anywhere else.</p>
+
+      <div class="notify-form-wrap">
+        <div id="notify-form-container">
+          <!-- 
+            INTEGRATION NOTE FOR DEVELOPERS
+            ================================
+            This form is pre-wired for Formspree (https://formspree.io).
+            Steps to activate:
+              1. Create a free Formspree account and start a new form.
+              2. Replace YOUR_FORM_ID below with your actual Formspree form ID.
+              3. That's it — submissions will appear in your Formspree dashboard
+                 and can be forwarded to any email address.
+
+            If you prefer a different backend (Mailchimp, ConvertKit, your own
+            endpoint), simply change the `action` attribute on the form and
+            adjust the field names to match your provider's requirements.
+          -->
+          <form
+            id="waitlist-form"
+            action="https://formspree.io/f/meeylqqn"
+            method="POST"
+            novalidate
+          >
+            <!-- Hidden field so you can filter these in Formspree -->
+            <input type="hidden" name="source" value="CFK Fellowship Waitlist">
+            <input type="hidden" name="cohort_interest" value="Spring 2027">
+
+            <div class="notify-name-row">
+              <input
+                class="notify-input"
+                type="text"
+                name="first_name"
+                placeholder="First name"
+                required
+                autocomplete="given-name"
+              >
+              <input
+                class="notify-input"
+                type="text"
+                name="last_name"
+                placeholder="Last name"
+                required
+                autocomplete="family-name"
+              >
+            </div>
+
+            <div class="notify-email-row">
+              <input
+                class="notify-input"
+                type="email"
+                name="email"
+                placeholder="Your email address"
+                required
+                autocomplete="email"
+              >
+              <button type="submit" class="notify-btn" id="notify-submit-btn">Notify Me</button>
+            </div>
+
+            <div class="notify-track-row">
+              <select class="notify-input" name="track_interest" required>
+                <option value="" disabled selected>Which track interests you most?</option>
+                <option value="WikiQuestions">WikiQuestions — Past question digitisation</option>
+                <option value="CTRI">CTRI — Open textbook writing</option>
+                <option value="Model NASS">Model National Assembly — Civic simulation</option>
+                <option value="Admin and Support">Admin and Support — Multiple roles</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <p class="notify-consent">By submitting, you agree to receive one email from CFK when Spring 2027 applications open. We do not sell your data or send marketing emails.</p>
+          </form>
+
+          <div class="notify-success" id="notify-success" aria-live="polite">
+            <div class="notify-success-icon">✓</div>
+            <div class="notify-success-heading">You're on the list.</div>
+            <div class="notify-success-body">We'll email you the moment Spring 2027 applications open — before we announce anywhere else. In the meantime, read the <a href="https://fellowship.careforknowledge.org/assets/downloads/cfk-fellowship-companion.pdf" style="color: var(--cyan);">Fellowship Companion</a> so you're ready to apply.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="notify-note">Questions? Reach us at <a href="mailto:fellowship@careforknowledge.org">fellowship@careforknowledge.org</a></p>
+    </div>
   </section>
+
   <footer role="contentinfo">
     <div class="footer-inner">
-      <!-- <div class="footer-logo">CFK <span>Fellowship</span></div> -->
       <img src="assets/images/cfk-logo-wordmark_1090x344.png" alt="CFK Fellowship Logo" style="height: 36px; width: auto;">
       <ul class="footer-links" aria-label="Footer navigation">
         <li><a href="https://careforknowledge.org">careforknowledge.org</a></li>
@@ -575,14 +886,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+
       // 1. STAT COUNTER EFFECT
       const counters = document.querySelectorAll(".hero-stat-num");
       counters.forEach(counter => {
         const target = +counter.getAttribute("data-count");
         let count = 0;
-        const duration = 1200; // Total ms animation duration
-        const increment = target / (duration / 16); // 16ms approx frame rate
-
+        const duration = 1200;
+        const increment = target / (duration / 16);
         const updateCount = () => {
           count += increment;
           if (count < target) {
@@ -596,12 +907,6 @@
       });
 
       // 2. FADE-IN ON SCROLL EFFECT
-      const observerOptions = {
-        root: null,
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-      };
-
       const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -609,27 +914,24 @@
             observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
       document.querySelectorAll(".animate-on-scroll").forEach(sec => {
         scrollObserver.observe(sec);
       });
 
-      // 3. DYNAMIC JOURNEY LINE TRACE DRAW EFFECT
+      // 3. JOURNEY LINE TRACE
       const journeyItems = document.querySelectorAll(".journey-item");
       const traceJourneyLine = () => {
         const triggerPoint = window.innerHeight * 0.75;
-        
         journeyItems.forEach((item) => {
           const rect = item.getBoundingClientRect();
           const lineFill = item.querySelector(".journey-line-fill");
-          
           if (rect.top < triggerPoint) {
             item.classList.add("active-trace");
             if (lineFill) {
-              const totalHeight = rect.height;
               const scrolledPastItem = triggerPoint - rect.top;
-              const percentage = Math.min(Math.max((scrolledPastItem / totalHeight) * 100, 0), 100);
+              const percentage = Math.min(Math.max((scrolledPastItem / rect.height) * 100, 0), 100);
               lineFill.style.height = percentage + "%";
             }
           } else {
@@ -638,9 +940,77 @@
           }
         });
       };
-
       window.addEventListener("scroll", traceJourneyLine);
-      traceJourneyLine(); // Run initial check
+      traceJourneyLine();
+
+      // 4. WAITLIST FORM — AJAX SUBMISSION WITH SUCCESS STATE
+      const form = document.getElementById("waitlist-form");
+      const successEl = document.getElementById("notify-success");
+      const submitBtn = document.getElementById("notify-submit-btn");
+
+      if (form) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Basic client-side validation
+          const firstName = form.querySelector('[name="first_name"]').value.trim();
+          const email = form.querySelector('[name="email"]').value.trim();
+          const track = form.querySelector('[name="track_interest"]').value;
+
+          if (!firstName || !email || !track) {
+            // Light visual nudge on empty required fields
+            form.querySelectorAll("[required]").forEach(field => {
+              if (!field.value.trim()) {
+                field.style.borderColor = "rgba(255, 27, 162, 0.6)";
+                field.addEventListener("input", () => {
+                  field.style.borderColor = "";
+                }, { once: true });
+              }
+            });
+            return;
+          }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending…";
+
+          try {
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: data,
+              headers: { Accept: "application/json" }
+            });
+
+            if (response.ok) {
+              form.style.display = "none";
+              successEl.style.display = "block";
+            } else {
+              // Fallback: surface a gentle error without breaking the page
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Try Again";
+              const errMsg = document.createElement("p");
+              errMsg.style.cssText = "color: rgba(255,27,162,0.8); font-size: 13px; margin-top: 12px; text-align: center;";
+              errMsg.textContent = "Something went wrong. Please try again or email us directly.";
+              form.appendChild(errMsg);
+            }
+          } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Try Again";
+          }
+        });
+      }
+
+      // 5. SMOOTH SCROLL for #notify anchor links
+      document.querySelectorAll('a[href="#notify"]').forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.getElementById("notify");
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
     });
   </script>
 </body>
