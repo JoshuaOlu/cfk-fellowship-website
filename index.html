@@ -790,35 +790,21 @@
 
       <div class="notify-form-wrap">
         <div id="notify-form-container">
-          <!-- 
-            INTEGRATION NOTE FOR DEVELOPERS
-            ================================
-            This form is pre-wired for Formspree (https://formspree.io).
-            Steps to activate:
-              1. Create a free Formspree account and start a new form.
-              2. Replace YOUR_FORM_ID below with your actual Formspree form ID.
-              3. That's it — submissions will appear in your Formspree dashboard
-                 and can be forwarded to any email address.
+          <!-- Silent iframe catches Google Forms' redirect so the page never navigates away -->
+          <iframe name="gforms-silent" id="gforms-silent" style="display:none;" aria-hidden="true"></iframe>
 
-            If you prefer a different backend (Mailchimp, ConvertKit, your own
-            endpoint), simply change the `action` attribute on the form and
-            adjust the field names to match your provider's requirements.
-          -->
           <form
             id="waitlist-form"
-            action="https://formspree.io/f/meeylqqn"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/formResponse"
             method="POST"
+            target="gforms-silent"
             novalidate
           >
-            <!-- Hidden field so you can filter these in Formspree -->
-            <input type="hidden" name="source" value="CFK Fellowship Waitlist">
-            <input type="hidden" name="cohort_interest" value="Spring 2027">
-
             <div class="notify-name-row">
               <input
                 class="notify-input"
                 type="text"
-                name="first_name"
+                name="entry.244376774"
                 placeholder="First name"
                 required
                 autocomplete="given-name"
@@ -826,7 +812,7 @@
               <input
                 class="notify-input"
                 type="text"
-                name="last_name"
+                name="entry.2078377701"
                 placeholder="Last name"
                 required
                 autocomplete="family-name"
@@ -837,7 +823,7 @@
               <input
                 class="notify-input"
                 type="email"
-                name="email"
+                name="entry.1005744584"
                 placeholder="Your email address"
                 required
                 autocomplete="email"
@@ -846,12 +832,12 @@
             </div>
 
             <div class="notify-track-row">
-              <select class="notify-input" name="track_interest" required>
+              <select class="notify-input" name="entry.1904400315" required>
                 <option value="" disabled selected>Which track interests you most?</option>
-                <option value="WikiQuestions">WikiQuestions — Past question digitisation</option>
-                <option value="CTRI">CTRI — Open textbook writing</option>
-                <option value="Model NASS">Model National Assembly — Civic simulation</option>
-                <option value="Admin and Support">Admin and Support — Multiple roles</option>
+                <option value="WikiQuestions — Past question digitisation">WikiQuestions — Past question digitisation</option>
+                <option value="CTRI — Open textbook writing">CTRI — Open textbook writing</option>
+                <option value="Model National Assembly — Civic simulation">Model National Assembly — Civic simulation</option>
+                <option value="Admin and Support — Multiple roles">Admin and Support — Multiple roles</option>
                 <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
@@ -943,22 +929,22 @@
       window.addEventListener("scroll", traceJourneyLine);
       traceJourneyLine();
 
-      // 4. WAITLIST FORM — AJAX SUBMISSION WITH SUCCESS STATE
+      // 4. WAITLIST FORM — Google Forms iframe submission (no page redirect)
       const form = document.getElementById("waitlist-form");
       const successEl = document.getElementById("notify-success");
       const submitBtn = document.getElementById("notify-submit-btn");
+      const silentFrame = document.getElementById("gforms-silent");
 
-      if (form) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          // Basic client-side validation
-          const firstName = form.querySelector('[name="first_name"]').value.trim();
-          const email = form.querySelector('[name="email"]').value.trim();
-          const track = form.querySelector('[name="track_interest"]').value;
+      if (form && silentFrame) {
+        form.addEventListener("submit", (e) => {
+          // Validate before letting the form POST to the iframe
+          const firstName = form.querySelector('[name="entry.244376774"]').value.trim();
+          const email = form.querySelector('[name="entry.1005744584"]').value.trim();
+          const track = form.querySelector('[name="entry.1904400315"]').value;
 
           if (!firstName || !email || !track) {
-            // Light visual nudge on empty required fields
+            e.preventDefault();
+            // Pink border nudge on empty required fields
             form.querySelectorAll("[required]").forEach(field => {
               if (!field.value.trim()) {
                 field.style.borderColor = "rgba(255, 27, 162, 0.6)";
@@ -970,33 +956,16 @@
             return;
           }
 
+          // Validation passed — let the form submit naturally into the hidden iframe.
+          // Disable the button immediately so it can't be double-submitted.
           submitBtn.disabled = true;
           submitBtn.textContent = "Sending…";
 
-          try {
-            const data = new FormData(form);
-            const response = await fetch(form.action, {
-              method: "POST",
-              body: data,
-              headers: { Accept: "application/json" }
-            });
-
-            if (response.ok) {
-              form.style.display = "none";
-              successEl.style.display = "block";
-            } else {
-              // Fallback: surface a gentle error without breaking the page
-              submitBtn.disabled = false;
-              submitBtn.textContent = "Try Again";
-              const errMsg = document.createElement("p");
-              errMsg.style.cssText = "color: rgba(255,27,162,0.8); font-size: 13px; margin-top: 12px; text-align: center;";
-              errMsg.textContent = "Something went wrong. Please try again or email us directly.";
-              form.appendChild(errMsg);
-            }
-          } catch (err) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Try Again";
-          }
+          // When the iframe loads Google's confirmation page, show our own success state.
+          silentFrame.addEventListener("load", () => {
+            form.style.display = "none";
+            successEl.style.display = "block";
+          }, { once: true });
         });
       }
 
