@@ -1,0 +1,40 @@
+---
+layout: base
+title: "Spring 2025 — Founding Cohort"
+description: "The Spring 2025 CFK Fellowship Founding Cohort — where the Fellowship began."
+---
+
+{% assign cohort_data = site.data.cohorts | where: "slug", "spring-2025" | first %}
+{% assign all_fellows = site.data.fellows | sort %}
+{% assign cohort_fellows = "" | split: "" %}
+{% for pair in all_fellows %}
+  {% assign f = pair[1] %}
+  {% if f.cohort contains "Spring 2025" %}
+    {% assign cohort_fellows = cohort_fellows | push: f %}
+  {% endif %}
+{% endfor %}
+
+<header class="page-header">
+  <div class="inner page-header-inner">
+    <span class="page-eyebrow">CFK Fellowship · <a href="/cohorts/" style="color:var(--cyan);opacity:0.7;">Cohorts</a></span>
+    <div style="display:inline-block;background:rgba(255,27,162,0.1);border:1px solid rgba(255,27,162,0.35);color:#FF1BA2;font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;margin-bottom:1rem;">Founding Cohort</div>
+    <h1 class="page-title">Spring 2025</h1>
+    <p class="page-intro">{{ cohort_data.date_range }} · Completed</p>
+    <p class="page-intro" style="margin-top:0.75rem;">{{ cohort_data.description }}</p>
+    {% if cohort_data.report_url and cohort_data.report_url != "" %}
+    <a href="{{ cohort_data.report_url }}" target="_blank" class="cohort-report-btn" style="margin-top:1.5rem;display:inline-flex;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Read Cohort Report
+    </a>
+    {% endif %}
+  </div>
+</header>
+
+<main style="padding:4rem 0 6rem;background:var(--white);">
+  <div class="inner">
+    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Fellows from this cohort</div>
+    <div class="fellows-grid">
+      {% for f in cohort_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+    </div>
+  </div>
+</main>

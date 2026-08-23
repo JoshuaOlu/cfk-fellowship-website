@@ -1,0 +1,56 @@
+{% assign f = include.fellow %}
+{% assign level_class = f.level | downcase | replace: ' ', '-' %}
+
+{% assign status_class = "" %}
+{% if f.status == "alumni" %}{% assign status_class = "fellow-card-alumni" %}{% endif %}
+{% if f.status == "emeritus" %}{% assign status_class = "fellow-card-emeritus" %}{% endif %}
+
+{% assign accent_class = "" %}
+{% if f.level == "Senior Fellow" %}{% assign accent_class = "card-senior" %}{% endif %}
+{% if f.level == "Associate Fellow" %}{% assign accent_class = "card-associate" %}{% endif %}
+{% if f.level == "Foundation Fellow" %}{% assign accent_class = "card-foundation" %}{% endif %}
+{% if f.level == "Principal Fellow" %}{% assign accent_class = "card-principal" %}{% endif %}
+
+{% assign initials = f.first_name | slice: 0 %}
+{% assign last_i = f.last_name | slice: 0 %}
+{% assign initials = initials | append: last_i %}
+
+<div class="fellow-card {{ accent_class }} {{ status_class }}">
+  <div class="fellow-card-inner">
+
+    <!-- Top row: photo + badge -->
+    <div class="fellow-card-top">
+      <div class="fellow-card-photo" title="{{ f.first_name }} {{ f.last_name }}">
+        {% if f.photo and f.photo != "" %}
+          <img src="{{ f.photo }}"
+               alt="{{ f.first_name }} {{ f.last_name }}"
+               loading="lazy"
+               onerror="this.style.display='none';">
+        {% endif %}
+        <span class="fellow-card-initials" aria-hidden="true">{{ initials }}</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+        {% if f.status == "emeritus" %}
+          <span class="emeritus-tag">Emeritus Fellow</span>
+        {% elsif f.status == "alumni" %}
+          <span class="alumni-tag">Alumni</span>
+        {% endif %}
+        <span class="level-badge level-badge-{{ level_class }}">{{ f.level }}</span>
+      </div>
+    </div>
+
+    <!-- Name -->
+    <div class="fellow-card-name">{{ f.first_name }} {{ f.last_name }}</div>
+
+    <!-- Track -->
+    <div class="fellow-card-track">{{ f.track }}</div>
+
+    <!-- Role -->
+    <div class="fellow-card-role">{{ f.current_role }}</div>
+
+    <!-- View Profile link -->
+    <a href="/fellows/{{ f.slug }}/" class="fellow-card-link">View Profile</a>
+
+  </div>
+</div>

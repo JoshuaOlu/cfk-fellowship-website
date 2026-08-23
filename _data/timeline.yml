@@ -1,0 +1,35 @@
+# ═══════════════════════════════════════════════════════════════
+# FELLOWSHIP TIMELINE
+# ───────────────────────────────────────────────────────────────
+# Key dates shown on the About page.
+# This is NOT an automatic log of every cohort — add entries here
+# only for genuinely milestone moments in the Fellowship's history.
+#
+# Keep this list short. Five to eight entries is about right.
+# If you add every cohort here it loses its meaning.
+#
+# FIELDS:
+#   date        Displayed as-is — can be a year, month + year, or a phrase
+#   label       Short title for the milestone (one line)
+#   description One or two sentences. Plain language, no jargon.
+# ═══════════════════════════════════════════════════════════════
+
+- date: "2023"
+  label: "The first contributors join CFK"
+  description: "Young Nigerians begin contributing informally to CTRI, WikiQuestions, and Model NASS as volunteers, before any fellowship structure existed."
+
+- date: "Spring 2025"
+  label: "The Founding Cohort"
+  description: "CFK runs its first structured cohort — an experiment in bringing contributors together around a shared mission for four focused months."
+
+- date: "June 2025"
+  label: "The Fellowship is formally established"
+  description: "Rather than disbanding after the founding cohort, CFK builds a permanent progression system. Existing contributors are placed at levels based on their history. The CFK Fellowship becomes an institution."
+
+- date: "Spring 2026"
+  label: "First cohort under the progression system"
+  description: "The Fellowship runs its second intake, this time with a full progression pathway, advancement portfolios, and a clear structure for long-term contribution."
+
+- date: "Autumn 2026"
+  label: "Third cohort — the Fellowship grows"
+  description: "15 new Foundation Fellows join across four tracks, bringing the total Fellowship community to over 35 active contributors."

@@ -1,0 +1,63 @@
+---
+layout: base
+title: Cohorts
+description: Every CFK Fellowship cohort — the Foundation Fellows who joined, the work they did, and the reports from each cycle.
+---
+
+{% assign cohorts = site.data.cohorts %}
+
+<header class="page-header">
+  <div class="inner page-header-inner">
+    <span class="page-eyebrow">CFK Fellowship · Cohort Archive</span>
+    <h1 class="page-title">All Cohorts</h1>
+    <p class="page-intro">Every intake of Foundation Fellows, from the founding cohort to the present.</p>
+  </div>
+</header>
+
+<main style="padding:4rem 0 6rem;">
+  <div class="inner">
+    <div class="cohorts-grid">
+      {% for cohort in cohorts %}
+      {% assign card_class = "cohort-summary-card" %}
+      {% if cohort.status == "active" %}{% assign card_class = "cohort-summary-card cohort-active" %}{% endif %}
+
+      <div class="{{ card_class }}">
+        <!-- Badges -->
+        {% if cohort.status == "active" %}
+          <span class="cohort-badge cohort-badge-active">Now Active</span>
+        {% elsif cohort.founding %}
+          <span class="cohort-badge cohort-badge-founding">Founding Cohort</span>
+        {% else %}
+          <span class="cohort-badge cohort-badge-completed">Completed</span>
+        {% endif %}
+
+        <div class="cohort-summary-name">{{ cohort.name }}</div>
+        <div class="cohort-summary-dates">{{ cohort.date_range }}</div>
+
+        {% if cohort.description %}
+          <p class="cohort-summary-desc">{{ cohort.description }}</p>
+        {% endif %}
+
+        <div class="cohort-meta-row">
+          <div class="cohort-meta-item">
+            <span class="cohort-meta-label">Foundation Fellows</span>
+            <span class="cohort-meta-val">{{ cohort.fellow_count }}</span>
+          </div>
+        </div>
+
+        <!-- Report link if available -->
+        {% if cohort.report_url and cohort.report_url != "" %}
+          <a href="{{ cohort.report_url }}" class="cohort-report-btn" target="_blank" style="margin-bottom:1rem;display:inline-flex;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read Cohort Report
+          </a>
+        {% endif %}
+
+        <a href="/cohorts/{{ cohort.slug }}/" class="cohort-link">
+          {% if cohort.status == "active" %}Meet the Fellows →{% else %}See this cohort →{% endif %}
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>

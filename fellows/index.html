@@ -1,0 +1,166 @@
+---
+layout: base
+title: Fellows
+description: Meet the CFK Fellows — active contributors, alumni, and emeritus members who have built free educational resources for Nigerian students.
+---
+
+{% assign all_fellows = site.data.fellows | sort %}
+{% assign autumn26 = site.data.autumn-2026-fellows %}
+
+<!-- Separate fellows by status and level -->
+{% assign senior_fellows    = "" | split: "" %}
+{% assign associate_fellows = "" | split: "" %}
+{% assign foundation_fellows= "" | split: "" %}
+{% assign principal_fellows = "" | split: "" %}
+{% assign alumni_fellows    = "" | split: "" %}
+{% assign emeritus_fellows  = "" | split: "" %}
+
+{% for pair in all_fellows %}
+  {% assign f = pair[1] %}
+  {% if f.status == "active" %}
+    {% if f.level == "Principal Fellow" %}{% assign principal_fellows = principal_fellows | push: f %}
+    {% elsif f.level == "Senior Fellow" %}{% assign senior_fellows = senior_fellows | push: f %}
+    {% elsif f.level == "Associate Fellow" %}{% assign associate_fellows = associate_fellows | push: f %}
+    {% elsif f.level == "Foundation Fellow" %}{% assign foundation_fellows = foundation_fellows | push: f %}
+    {% endif %}
+  {% elsif f.status == "emeritus" %}
+    {% assign emeritus_fellows = emeritus_fellows | push: f %}
+  {% elsif f.status == "alumni" %}
+    {% assign alumni_fellows = alumni_fellows | push: f %}
+  {% endif %}
+{% endfor %}
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="inner page-header-inner">
+    <span class="page-eyebrow">CFK Fellowship · Our People</span>
+    <h1 class="page-title">The Fellows</h1>
+    <p class="page-intro">The young Nigerians building free educational resources — active contributors, alumni, and everyone who has made the Fellowship what it is.</p>
+  </div>
+</header>
+
+<main style="padding: 4rem 0 6rem; background: var(--white);">
+  <div class="inner">
+
+    <!-- ── CURRENT COHORT (Autumn 2026 — lighter treatment) ── -->
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Autumn 2026 Cohort · Foundation Fellows in Progress</div>
+      <div class="cohort-card-grid">
+        {% for person in autumn26 %}
+        <div class="cohort-card">
+          <div class="cohort-card-photo">
+            {% if person.photo and person.photo != "" %}
+              <img src="{{ person.photo }}" alt="{{ person.first_name }} {{ person.last_name }}">
+            {% else %}
+              <span class="cohort-card-initials">{{ person.first_name | slice: 0 }}{{ person.last_name | slice: 0 }}</span>
+            {% endif %}
+          </div>
+          <div class="cohort-card-name">{{ person.first_name }} {{ person.last_name }}</div>
+          <div class="cohort-card-track">{{ person.track }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ── PRINCIPAL FELLOWS ── -->
+    {% if principal_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Principal Fellows</div>
+      <div class="fellows-grid">
+        {% for f in principal_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── SENIOR FELLOWS ── -->
+    {% if senior_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Senior Fellows</div>
+      <div class="fellows-grid">
+        {% for f in senior_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── ASSOCIATE FELLOWS ── -->
+    {% if associate_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Associate Fellows</div>
+      <div class="fellows-grid">
+        {% for f in associate_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── FOUNDATION FELLOWS (graduated, continuing) ── -->
+    {% if foundation_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Foundation Fellows</div>
+      <div class="fellows-grid">
+        {% for f in foundation_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── EMERITUS FELLOWS ── -->
+    {% if emeritus_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Emeritus Fellows</div>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2rem;max-width:560px;">Fellows who reached Senior or Principal level and made an extended contribution before stepping back. The title is permanent.</p>
+      <div class="fellows-grid">
+        {% for f in emeritus_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── EMERITUS FELLOWS ── -->
+    {% if emeritus_fellows.size > 0 %}
+    <section class="fellows-section">
+      <div class="fellows-section-heading">Emeritus Fellows</div>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2rem;max-width:560px;">Fellows who reached Senior or Principal level and made an extended contribution before stepping back. The title is permanent — a record of serious long-term service.</p>
+      <div class="fellows-grid">
+        {% for f in emeritus_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── ALUMNI — collapsible ── -->
+    {% if alumni_fellows.size > 0 %}
+    <section class="fellows-section">
+
+      <button class="alumni-toggle-btn" aria-expanded="false" aria-controls="alumni-grid"
+              onclick="toggleAlumni(this)">
+        <span class="alumni-toggle-chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        Alumni · {{ alumni_fellows.size }} Fellows
+      </button>
+
+      <div class="alumni-collapsible collapsed" id="alumni-grid">
+        <p style="font-size:0.9rem;color:var(--muted);margin:1.5rem 0 2rem;max-width:560px;">Fellows who completed the Foundation Cohort and moved on. Their contribution is part of the Fellowship's story — their profiles remain permanent.</p>
+        <div class="fellows-grid">
+          {% for f in alumni_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+        </div>
+      </div>
+
+    </section>
+    {% endif %}
+
+  </div>
+</main>
+
+<script>
+function toggleAlumni(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  var grid = document.getElementById('alumni-grid');
+  if (expanded) {
+    btn.setAttribute('aria-expanded', 'false');
+    grid.classList.add('collapsed');
+    grid.style.maxHeight = '0';
+  } else {
+    btn.setAttribute('aria-expanded', 'true');
+    grid.classList.remove('collapsed');
+    grid.style.maxHeight = grid.scrollHeight + 'px';
+  }
+}
+</script>

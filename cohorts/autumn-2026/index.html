@@ -1,0 +1,42 @@
+---
+layout: base
+title: "Autumn 2026 Cohort"
+description: "Meet the Autumn 2026 CFK Fellowship Foundation Fellows — currently in progress across WikiQuestions, CTRI, Model NASS, and Admin & Support."
+---
+
+{% assign cohort_data = site.data.cohorts | where: "slug", "autumn-2026" | first %}
+{% assign fellows = site.data.autumn-2026-fellows %}
+
+<header class="page-header">
+  <div class="inner page-header-inner">
+    <span class="page-eyebrow">CFK Fellowship · <a href="/cohorts/" style="color:var(--cyan);opacity:0.7;">Cohorts</a></span>
+    <h1 class="page-title">{{ cohort_data.name }} Cohort</h1>
+    <p class="page-intro">{{ cohort_data.date_range }} · {{ cohort_data.fellow_count }} Foundation Fellows · Currently active</p>
+    <p class="page-intro" style="margin-top:0.75rem;">{{ cohort_data.description }}</p>
+  </div>
+</header>
+
+<main style="padding:4rem 0 6rem;background:var(--white);">
+  <div class="inner">
+    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">
+      Foundation Fellows · In Progress
+    </div>
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2.5rem;max-width:520px;">These Fellows are currently in their 16-week Foundation Cohort. Permanent profile pages will be created when they graduate.</p>
+
+    <div class="cohort-card-grid">
+      {% for person in fellows %}
+      <div class="cohort-card">
+        <div class="cohort-card-photo">
+          {% if person.photo and person.photo != "" %}
+            <img src="{{ person.photo }}" alt="{{ person.first_name }} {{ person.last_name }}">
+          {% else %}
+            <span class="cohort-card-initials">{{ person.first_name | slice: 0 }}{{ person.last_name | slice: 0 }}</span>
+          {% endif %}
+        </div>
+        <div class="cohort-card-name">{{ person.first_name }} {{ person.last_name }}</div>
+        <div class="cohort-card-track">{{ person.track }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>

@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════
+# CFK FELLOWSHIP WEBSITE — Jekyll Configuration
+# ───────────────────────────────────────────────────────────────
+# You should rarely need to edit this file.
+# For site content and status updates, edit files in _data/ instead.
+# ═══════════════════════════════════════════════════════════════
+
+title: CFK Fellowship
+description: A structured volunteer community for young Nigerians contributing to free educational resources.
+url: "https://fellowship.careforknowledge.org"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Exclude from build output
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - "README-*.md"
+  - node_modules
+  - index_old.html
+
+# ── COLLECTIONS ─────────────────────────────────────────────────
+# Fellows: each file in _fellows/ generates one page at /fellows/[slug]/
+collections:
+  fellows:
+    output: true
+    permalink: /fellows/:name/
+
+# ── SITE-WIDE URLS ──────────────────────────────────────────────
+# Update these if the links ever change.
+cfk_url:         "https://careforknowledge.org"
+companion_url:   "/assets/downloads/cfk-fellowship-companion.pdf"
+email:           "fellowship@careforknowledge.org"
+instagram_url:   "https://instagram.com/careforknowledge"
+twitter_url:     "https://x.com/careforknowledge"
+linkedin_url:    "https://linkedin.com/company/careforknowledge"

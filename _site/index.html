@@ -1,11 +1,90 @@
----
-layout: base
-title: "CFK Fellowship — Real Work. Real Growth. Real Community."
-description: "A structured volunteer community for young Nigerians contributing to free educational resources and growing together."
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFK Fellowship — Real Work. Real Growth. Real Community. — CFK Fellowship</title>
+  <meta name="description" content="A structured volunteer community for young Nigerians contributing to free educational resources and growing together.">
+  <meta name="author" content="Care for Knowledge">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="http://localhost:4000/">
 
-{% assign status = site.data.site_status.status %}
-{% assign cohort = site.data.current_cohort %}
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon/favicon-512.png">
+  <link rel="apple-touch-icon" href="/assets/images/favicon/favicon-192.png">
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/">
+  <meta property="og:title" content="CFK Fellowship — Real Work. Real Growth. Real Community. — CFK Fellowship">
+  <meta property="og:description" content="A structured volunteer community for young Nigerians contributing to free educational resources and growing together.">
+  <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="CFK Fellowship">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  
+</head>
+<body>
+
+  
+
+
+<div class="fixed-header">
+
+  <!-- ── MAIN NAV ── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-link">
+        <img src="/assets/images/cfk-logo-wordmark_1090x344.png"
+             alt="CFK Fellowship" style="height:32px;width:auto;">
+      </a>
+      <div class="nav-links">
+        <a href="/about/" class="nav-link ">About</a>
+        <a href="/fellows/" class="nav-link ">Fellows</a>
+        <a href="/cohorts/" class="nav-link ">Cohorts</a>
+        <a href="https://careforknowledge.org" class="nav-link nav-link-external" target="_blank">careforknowledge.org</a>
+
+        <!-- CTA button changes based on status -->
+        
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/viewform" target="_blank" class="nav-cta">Join Waitlist</a>
+        
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" aria-label="Toggle menu"
+        onclick="this.closest('.fixed-header').querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── ANNOUNCEMENT BAR ── -->
+  <!-- Changes text based on current status -->
+  <div class="announcement" role="banner">
+    <p>
+      
+        <span class="announcement-badge announcement-badge-active">Cohort Active</span>
+        The Autumn 2026 Cohort is underway. Applications for the next cohort open in early 2027.
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/viewform" target="_blank">Join the waitlist ↗</a>
+      
+    </p>
+  </div>
+
+</div>
+
+
+  
+
 
 <!-- ── HERO ── -->
 <header class="hero" role="banner">
@@ -20,32 +99,17 @@ description: "A structured volunteer community for young Nigerians contributing 
       <!-- Status chip — changes per mode -->
       <div class="hero-status" aria-live="polite">
         <span class="dot"></span>
-        {% if status == "recruiting" %}
-          <span>Applications for the <strong>{{ cohort.name }} Cohort</strong> are now open.</span>
-        {% elsif status == "reviewing" %}
-          <span>Applications for the <strong>{{ cohort.name }} Cohort</strong> are closed. Selections are in progress.</span>
-        {% elsif status == "active" %}
-          <span>The <strong>{{ cohort.name }} Cohort</strong> is currently underway.</span>
-        {% else %}
-          <span>No cohort is currently running. The next cohort will be announced soon.</span>
-        {% endif %}
+        
+          <span>The <strong>Autumn 2026 Cohort</strong> is currently underway.</span>
+        
       </div>
 
       <!-- CTAs — change per mode -->
       <div class="hero-ctas">
-        {% if status == "recruiting" %}
-          <a href="{{ cohort.apply_url }}" target="_blank" class="btn-cyan">Apply for {{ cohort.name }}</a>
-          <a href="{{ site.companion_url }}" class="btn-ghost">Read the Fellowship Companion</a>
-        {% elsif status == "reviewing" %}
-          <a href="{{ cohort.waitlist_url }}" target="_blank" class="btn-cyan">Join the Waitlist</a>
-          <a href="{{ site.companion_url }}" class="btn-ghost">Read the Fellowship Companion</a>
-        {% elsif status == "active" %}
+        
           <a href="/fellows/" class="btn-cyan">Meet the Fellows →</a>
-          <a href="{{ cohort.waitlist_url }}" target="_blank" class="btn-ghost">Join the waitlist for next cohort</a>
-        {% else %}
-          <a href="{{ cohort.waitlist_url }}" target="_blank" class="btn-cyan">Express Interest</a>
-          <a href="{{ site.companion_url }}" class="btn-ghost">Read the Fellowship Companion</a>
-        {% endif %}
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/viewform" target="_blank" class="btn-ghost">Join the waitlist for next cohort</a>
+        
       </div>
 
       <!-- Stats -->
@@ -131,7 +195,7 @@ description: "A structured volunteer community for young Nigerians contributing 
           <span class="track-pill">Events and Programme</span>
         </article>
       </a>
-      <a href="{{ site.cfk_url }}" class="track-link" target="_blank" rel="noopener">
+      <a href="https://careforknowledge.org" class="track-link" target="_blank" rel="noopener">
         <article class="track">
           <img src="/assets/images/icons/icon-admin_96x96.png" class="track-icon-img" alt="Admin and Support">
           <h3 class="track-name">Admin and Support</h3>
@@ -195,7 +259,7 @@ description: "A structured volunteer community for young Nigerians contributing 
         <div class="companion-label">Before You Apply</div>
         <h2 class="companion-heading">Read the Fellowship Companion first.</h2>
         <p class="companion-body">The CFK Fellowship Companion is a document we wrote with genuine care. It tells you everything about how the Fellowship works, what you can expect from us, and what we will expect from you. Read it before the next applications open.</p>
-        <a href="{{ site.companion_url }}" class="btn-navy">Read the Companion</a>
+        <a href="/assets/downloads/cfk-fellowship-companion.pdf" class="btn-navy">Read the Companion</a>
       </div>
       <div class="companion-points">
         <div class="companion-point"><div class="companion-point-icon">📋</div><div><div class="companion-point-title">Your rights as a Fellow</div><div class="companion-point-desc">Every Fellow's rights are documented in writing. The relationship is mutual, and we are accountable to it.</div></div></div>
@@ -210,17 +274,10 @@ description: "A structured volunteer community for young Nigerians contributing 
 <!-- ── WAITLIST / APPLY ── -->
 <section class="notify-section anim" id="notify">
   <div class="notify-inner">
-    {% if status == "recruiting" %}
-      <div class="notify-eyebrow">{{ cohort.name }} Cohort</div>
-      <h2 class="notify-heading">Apply to join the <em>Fellowship</em>.</h2>
-      <p class="notify-sub">Applications for the {{ cohort.name }} Cohort are now open. Read the Fellowship Companion first, then apply below.</p>
-      <div style="text-align:center;">
-        <a href="{{ cohort.apply_url }}" target="_blank" class="btn-cyan" style="font-size:14px;padding:18px 48px;">Apply Now →</a>
-      </div>
-    {% else %}
+    
       <div class="notify-eyebrow">Stay Connected</div>
       <h2 class="notify-heading">Be the <em>first to know</em><br>when applications open.</h2>
-      <p class="notify-sub">{% if status == "active" %}The {{ cohort.name }} Cohort is currently underway. Leave your details and we will email you the moment the next cohort opens.{% elsif status == "reviewing" %}Applications are closed. We are reviewing submissions. Leave your details to be notified about the next cohort.{% else %}No cohort is running right now. Leave your details and we will reach out when the next one opens.{% endif %}</p>
+      <p class="notify-sub">The Autumn 2026 Cohort is currently underway. Leave your details and we will email you the moment the next cohort opens.</p>
       <div class="notify-form-wrap">
         <div id="notify-form-container">
           <iframe name="gforms-silent" id="gforms-silent" style="display:none;" aria-hidden="true"></iframe>
@@ -248,12 +305,12 @@ description: "A structured volunteer community for young Nigerians contributing 
           <div class="notify-success" id="notify-success" aria-live="polite">
             <div class="notify-success-icon">✓</div>
             <div class="notify-success-heading">You're on the list.</div>
-            <div class="notify-success-body">We'll email you when applications open. In the meantime, read the <a href="{{ site.companion_url }}" style="color:var(--cyan);">Fellowship Companion</a> so you're ready.</div>
+            <div class="notify-success-body">We'll email you when applications open. In the meantime, read the <a href="/assets/downloads/cfk-fellowship-companion.pdf" style="color:var(--cyan);">Fellowship Companion</a> so you're ready.</div>
           </div>
         </div>
       </div>
-    {% endif %}
-    <p class="notify-note">Questions? <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    
+    <p class="notify-note">Questions? <a href="mailto:fellowship@careforknowledge.org">fellowship@careforknowledge.org</a></p>
   </div>
 </section>
 
@@ -313,3 +370,49 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+
+  
+
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <img src="/assets/images/cfk-logo-wordmark_1090x344.png"
+         alt="CFK Fellowship" style="height:36px;width:auto;max-width:200px;flex-shrink:0;">
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/fellows/">Fellows</a>
+      <a href="/cohorts/">Cohorts</a>
+      <a href="/assets/downloads/cfk-fellowship-companion.pdf">Fellowship Companion</a>
+      <a href="https://careforknowledge.org" target="_blank">careforknowledge.org</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <span class="footer-tagline">Learn. Share. Care. ✦</span>
+      <span class="footer-copy">© 2026 Care for Knowledge</span>
+      <a href="mailto:fellowship@careforknowledge.org" class="footer-email">fellowship@careforknowledge.org</a>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Scroll animation — runs on every page -->
+  <script>
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.anim').forEach(el => scrollObserver.observe(el));
+  </script>
+
+  
+
+</body>
+</html>

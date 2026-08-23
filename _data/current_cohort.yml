@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════
+# CURRENT COHORT
+# ───────────────────────────────────────────────────────────────
+# Update this file when a new cohort cycle begins.
+# Works together with site_status.yml to drive the homepage.
+# ═══════════════════════════════════════════════════════════════
+
+name: "Autumn 2026"
+season: "Autumn"
+year: "2026"
+slug: "autumn-2026"           # used in the URL: /cohorts/autumn-2026/
+
+# Dates shown publicly
+start_month: "August"
+end_month: "November"
+full_date_range: "August – November 2026"
+
+# Number of Fellows selected this cohort
+fellow_count: 15
+
+# Tracks represented
+tracks:
+  - WikiQuestions
+  - CTRI
+  - Model National Assembly
+  - CFK Fellowship
+
+# ── LINKS ───────────────────────────────────────────────────────
+# Application form — shown when status is "recruiting"
+apply_url: "https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/formResponse"
+
+# Waitlist form — shown when status is "reviewing", "active", or "between"
+# Currently the same Google Form as apply_url; update if you create a separate one.
+waitlist_url: "https://docs.google.com/forms/d/e/1FAIpQLScPB0lHxJIXli7L7fRj4rjHmkHMRaawwPtcaQOfPBZjHRGbhw/viewform"
+
+# ── STATUS-SPECIFIC MESSAGES ────────────────────────────────────
+# These customise the announcement bar and hero text per status.
+# You can leave the ones you're not currently using as-is.
+
+recruiting:
+  announcement: "Applications for the Autumn 2026 Cohort are now open."
+  hero_status: "Applications open · Autumn 2026 Cohort"
+  cta_label: "Apply Now"
+
+reviewing:
+  announcement: "Applications for the Autumn 2026 Cohort are now closed. We are reviewing applications."
+  hero_status: "Applications closed · Selections in progress"
+  cta_label: "Join the Waitlist"
+
+active:
+  announcement: "The Autumn 2026 Cohort is underway. Applications for the next cohort open in early 2027."
+  hero_status: "Autumn 2026 Cohort · Now active"
+  cta_label: "Join the Waitlist"
+
+between:
+  announcement: "No cohort is currently running. The next cohort will be announced in due course."
+  hero_status: "Next cohort coming soon"
+  cta_label: "Join the Waitlist"

@@ -1,0 +1,95 @@
+---
+layout: base
+title: About
+description: The CFK Fellowship is a structured volunteer community giving young Nigerians meaningful progression, genuine belonging, and intentional growth.
+---
+
+{% assign ab = site.data.about %}
+{% assign timeline = site.data.timeline %}
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="inner page-header-inner">
+    <span class="page-eyebrow">{{ ab.eyebrow }}</span>
+    <h1 class="page-title">{{ ab.heading }}</h1>
+    <p class="page-intro">{{ ab.intro }}</p>
+  </div>
+</header>
+
+<!-- ── THE PROBLEM ── -->
+<section class="about-section about-section-white anim">
+  <div class="inner">
+    <div class="about-content">
+      <span class="eyebrow">{{ ab.problem.eyebrow }}</span>
+      <h2>{{ ab.problem.heading }}</h2>
+      {% for para in ab.problem.paragraphs %}
+        <p>{{ para }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── THREE COMMITMENTS ── -->
+<section class="about-section about-section-navy anim">
+  <div class="inner">
+    <div class="about-content" style="max-width:100%;">
+      <span class="eyebrow eyebrow-cyan">{{ ab.commitments.eyebrow }}</span>
+      <h2 class="sh-light">{{ ab.commitments.heading }}</h2>
+    </div>
+    <div class="commitment-grid">
+      {% for item in ab.commitments.items %}
+      <div class="commitment-card">
+        <div class="commitment-icon">{{ item.icon }}</div>
+        <div class="commitment-title">{{ item.title }}</div>
+        <p class="commitment-body">{{ item.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── TRACKS ── -->
+<section class="about-section about-section-off anim">
+  <div class="inner">
+    <div class="about-content">
+      <span class="eyebrow">{{ ab.tracks.eyebrow }}</span>
+      <h2>{{ ab.tracks.heading }}</h2>
+      <p>{{ ab.tracks.intro }}</p>
+      <a href="/#tracks" class="btn-navy" style="margin-top:1.5rem;display:inline-block;">See the four tracks →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IT'S FOR ── -->
+<section class="about-section about-section-white anim">
+  <div class="inner">
+    <div class="about-content">
+      <span class="eyebrow">{{ ab.audience.eyebrow }}</span>
+      <h2>{{ ab.audience.heading }}</h2>
+      {% for para in ab.audience.paragraphs %}
+        <p>{{ para }}</p>
+      {% endfor %}
+      <a href="{{ site.companion_url }}" class="btn-navy" style="margin-top:1.5rem;display:inline-block;">Read the Fellowship Companion</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── KEY TIMELINE ── -->
+<section class="about-section about-section-navy anim" id="history">
+  <div class="inner">
+    <span class="eyebrow eyebrow-cyan">Our History</span>
+    <h2 class="sh sh-light" style="max-width:600px;">Key moments in the Fellowship's story.</h2>
+    <div class="timeline">
+      {% for entry in timeline %}
+      <div class="timeline-item">
+        <div class="timeline-date">{{ entry.date }}</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-body">
+          <div class="timeline-label">{{ entry.label }}</div>
+          <p class="timeline-desc">{{ entry.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

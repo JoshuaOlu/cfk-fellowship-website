@@ -1,0 +1,51 @@
+# ═══════════════════════════════════════════════════════════════
+# ABOUT THE FELLOWSHIP
+# ───────────────────────────────────────────────────────────────
+# This file drives the /about/ page content.
+# Edit it when the programme's framing or description needs updating.
+# You should rarely need to touch this — it describes the Fellowship
+# itself, which doesn't change between cohorts.
+# ═══════════════════════════════════════════════════════════════
+
+# ── HERO ────────────────────────────────────────────────────────
+eyebrow: "CFK Fellowship · Care for Knowledge"
+heading: "A community built for the long haul."
+intro: "The CFK Fellowship is a structured volunteer community for young Nigerians who want to contribute to something that lasts — and grow meaningfully while doing it."
+
+# ── THE PROBLEM ─────────────────────────────────────────────────
+problem:
+  eyebrow: "Why the Fellowship Exists"
+  heading: "Commitment without structure doesn't survive."
+  paragraphs:
+    - "CFK's programmes are long-term by design. CTRI will take years to cover every WAEC subject. WikiQuestions will take years to digitise every past question. Model NASS runs indefinitely. Progress is slow and results are distant."
+    - "Without structure, meaning, or a genuine sense of belonging, even committed contributors lose the thread. Some burn out. Others drift away — not because they stopped caring, but because there was nothing holding them in community with each other."
+    - "The CFK Fellowship is the answer to that problem. It builds the conditions that make long-term commitment possible: structure, progression, and a community that sees you as a person, not just a producer."
+
+# ── THREE COMMITMENTS ───────────────────────────────────────────
+commitments:
+  eyebrow: "How It Works"
+  heading: "Three things every Fellow commits to."
+  items:
+    - icon: "🛠️"
+      title: "Contribution"
+      body: "Every Fellow contributes to CFK's work — on a programme or in an operational support role. The community exists in service of a mission, and membership means participating in that mission actively."
+    - icon: "🤝"
+      title: "Community"
+      body: "The Fellowship holds regular meetings — some with invited speakers, others as internal conversations about growth and direction. These are not optional extras. They are how the Fellowship stays a community rather than a task force."
+    - icon: "📈"
+      title: "Progression"
+      body: "Fellows advance through four levels — Foundation, Associate, Senior, and Principal — with defined expectations, advancement portfolios, and formal recognition at each stage. Progression is earned, not automatic."
+
+# ── TRACKS ──────────────────────────────────────────────────────
+tracks:
+  eyebrow: "Where Fellows Contribute"
+  heading: "Two kinds of contribution. Four tracks."
+  intro: "Every Fellow works within one of four tracks. Programme Fellows contribute directly to CFK's educational resources. Admin and Support Fellows keep everything running so Programme Fellows can focus on their best work."
+
+# ── WHO IT'S FOR ────────────────────────────────────────────────
+audience:
+  eyebrow: "Who Should Apply"
+  heading: "Serious contributors, 18 to 30."
+  paragraphs:
+    - "The Fellowship is open to undergraduate students, postgraduate students, and young professionals in the early years of their careers — people in a formative period where structured, community-oriented contribution can shape who they become."
+    - "What matters is not your background or your credentials. It is your genuine desire to contribute to something larger than yourself, and your willingness to commit to the structure that makes that contribution sustainable."

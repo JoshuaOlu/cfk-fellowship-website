@@ -1,0 +1,24 @@
+{% assign status = site.data.site_status.status %}
+{% assign cohort = site.data.current_cohort %}
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <img src="/assets/images/cfk-logo-wordmark_1090x344.png"
+         alt="CFK Fellowship" style="height:36px;width:auto;max-width:200px;flex-shrink:0;">
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/fellows/">Fellows</a>
+      <a href="/cohorts/">Cohorts</a>
+      <a href="{{ site.companion_url }}">Fellowship Companion</a>
+      <a href="{{ site.cfk_url }}" target="_blank">careforknowledge.org</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <span class="footer-tagline">Learn. Share. Care. ✦</span>
+      <span class="footer-copy">© {{ 'now' | date: "%Y" }} Care for Knowledge</span>
+      <a href="mailto:{{ site.email }}" class="footer-email">{{ site.email }}</a>
+    </div>
+  </div>
+</footer>

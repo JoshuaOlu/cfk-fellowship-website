@@ -1,0 +1,58 @@
+{% assign status = site.data.site_status.status %}
+{% assign cohort = site.data.current_cohort %}
+
+<div class="fixed-header">
+
+  <!-- ── MAIN NAV ── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-link">
+        <img src="/assets/images/cfk-logo-wordmark_1090x344.png"
+             alt="CFK Fellowship" style="height:32px;width:auto;">
+      </a>
+      <div class="nav-links">
+        <a href="/about/" class="nav-link {% if page.url contains 'about' %}nav-link-active{% endif %}">About</a>
+        <a href="/fellows/" class="nav-link {% if page.url contains 'fellows' %}nav-link-active{% endif %}">Fellows</a>
+        <a href="/cohorts/" class="nav-link {% if page.url contains 'cohorts' %}nav-link-active{% endif %}">Cohorts</a>
+        <a href="{{ site.cfk_url }}" class="nav-link nav-link-external" target="_blank">careforknowledge.org</a>
+
+        <!-- CTA button changes based on status -->
+        {% if status == "recruiting" %}
+          <a href="{{ cohort.apply_url }}" target="_blank" class="nav-cta">Apply Now</a>
+        {% else %}
+          <a href="{{ cohort.waitlist_url }}" target="_blank" class="nav-cta">Join Waitlist</a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" aria-label="Toggle menu"
+        onclick="this.closest('.fixed-header').querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── ANNOUNCEMENT BAR ── -->
+  <!-- Changes text based on current status -->
+  <div class="announcement" role="banner">
+    <p>
+      {% if status == "recruiting" %}
+        <span class="announcement-badge">Applications Open</span>
+        {{ cohort.recruiting.announcement }}
+        <a href="{{ cohort.apply_url }}" target="_blank">Apply now ↗</a>
+      {% elsif status == "reviewing" %}
+        <span class="announcement-badge announcement-badge-reviewing">Under Review</span>
+        {{ cohort.reviewing.announcement }}
+      {% elsif status == "active" %}
+        <span class="announcement-badge announcement-badge-active">Cohort Active</span>
+        {{ cohort.active.announcement }}
+        <a href="{{ cohort.waitlist_url }}" target="_blank">Join the waitlist ↗</a>
+      {% else %}
+        <span class="announcement-badge announcement-badge-between">Coming Soon</span>
+        {{ cohort.between.announcement }}
+        <a href="{{ cohort.waitlist_url }}" target="_blank">Join the waitlist ↗</a>
+      {% endif %}
+    </p>
+  </div>
+
+</div>

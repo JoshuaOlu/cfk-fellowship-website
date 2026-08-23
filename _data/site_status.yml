@@ -1,0 +1,29 @@
+# ═══════════════════════════════════════════════════════════════
+# SITE STATUS
+# ───────────────────────────────────────────────────────────────
+# This ONE field controls what the homepage shows.
+# Change it and the homepage, nav button, and announcement bar
+# all update automatically.
+#
+# STATUS OPTIONS:
+#
+#   recruiting  — Applications are open. Show the full apply CTA.
+#
+#   reviewing   — Applications closed, selections being made.
+#                 "We've received applications and are reviewing them.
+#                  If you applied, watch your email."
+#
+#   active      — Cohort is running. No recruitment.
+#                 "The [cohort] cohort is underway. Meet the Fellows."
+#
+#   between     — Between cohorts, nothing imminent.
+#                 Evergreen homepage, waitlist form.
+#
+# WORKFLOW:
+#   Opening applications  → set to "recruiting", update current_cohort.yml
+#   Applications close    → set to "reviewing"
+#   Cohort begins         → set to "active"
+#   Cohort ends           → add to cohorts.yml, set to "between" or "recruiting"
+# ═══════════════════════════════════════════════════════════════
+
+status: "active"

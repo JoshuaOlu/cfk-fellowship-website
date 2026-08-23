@@ -1,0 +1,92 @@
+# ═══════════════════════════════════════════════════════════════
+# AUTUMN 2026 COHORT — CURRENT FOUNDATION FELLOWS
+# ───────────────────────────────────────────────────────────────
+# These Fellows are currently in their Foundation Cohort.
+# They appear on /cohorts/autumn-2026/ with a lighter treatment
+# (headshot, name, track) but do NOT have individual profile pages yet.
+#
+# When the cohort ends and they graduate:
+#   1. Create a full YAML file for each Fellow in _data/fellows/
+#   2. Create their collection file in _fellows/
+#   3. Remove them from this list
+#
+# ADDING A HEADSHOT:
+#   Save the photo to /assets/images/cohorts/autumn-2026/[slug].jpg
+#   Then add the path to the photo field below.
+#   Leave blank ("") if no photo yet — a placeholder will show.
+# ═══════════════════════════════════════════════════════════════
+
+- first_name: "Dorcas"
+  last_name: "Durosomo"
+  track: "Model NASS"
+  photo: ""
+
+- first_name: "Joan"
+  last_name: "Adeleye"
+  track: "CFK Fellowship"
+  photo: ""
+
+- first_name: "Preciousgift"
+  last_name: "Chimdiebube"
+  track: "CFK Fellowship"
+  photo: ""
+
+- first_name: "Kaosara"
+  last_name: "Odumuyiwa"
+  track: "CTRI"
+  photo: ""
+
+- first_name: "Goodnews"
+  last_name: "Situ"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Oreoluwa"
+  last_name: "Adedayo"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Aisha"
+  last_name: "Abimbola"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Joshua"
+  last_name: "Kehinde"
+  track: "CTRI"
+  photo: ""
+
+- first_name: "Ayodeji"
+  last_name: "Omotayo"
+  track: "CFK Fellowship"
+  photo: ""
+
+- first_name: "Faruq"
+  last_name: "Salahu"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Oluwapelumi"
+  last_name: "Ajewole"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Ayofe Abdullahi"
+  last_name: "Abdullahi"
+  track: "WikiQuestions"
+  photo: ""
+
+- first_name: "Janet"
+  last_name: "Olatunji"
+  track: "CFK Fellowship"
+  photo: ""
+
+- first_name: "Precious"
+  last_name: "Ajewole"
+  track: "CTRI"
+  photo: ""
+
+- first_name: "Princess"
+  last_name: "Egbowon"
+  track: "WikiQuestions"
+  photo: ""

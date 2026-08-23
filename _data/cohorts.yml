@@ -1,0 +1,55 @@
+# ═══════════════════════════════════════════════════════════════
+# COHORTS ARCHIVE
+# ───────────────────────────────────────────────────────────────
+# Add new cohorts at the TOP of this list when they complete.
+# The /cohorts/ index and individual cohort pages read from here.
+#
+# FIELD REFERENCE:
+#   name          Full cohort name (e.g. "Autumn 2026")
+#   slug          URL slug — must match the folder name in /cohorts/
+#                 e.g. "autumn-2026" → /cohorts/autumn-2026/
+#   season        "Spring" or "Autumn"
+#   year          e.g. "2026"
+#   date_range    Human-readable dates shown on the page
+#   fellow_count  How many Foundation Fellows joined this cohort
+#   status        "active" (currently running) or "completed"
+#   founding      Set to true ONLY for Spring 2025. Adds the founding badge.
+#   description   One or two sentences about this cohort. Optional.
+#   report_url    Path to PDF report, e.g. /assets/downloads/reports/spring-2025.pdf
+#                 Leave blank ("") until the report is published.
+# ═══════════════════════════════════════════════════════════════
+
+- name: "Autumn 2026"
+  slug: "autumn-2026"
+  season: "Autumn"
+  year: "2026"
+  date_range: "August – November 2026"
+  fellow_count: 15
+  status: "active"
+  founding: false
+  description: "The third cohort intake, bringing 15 new Foundation Fellows across four tracks."
+  report_url: ""
+
+- name: "Spring 2026"
+  slug: "spring-2026"
+  season: "Spring"
+  year: "2026"
+  date_range: "February – May 2026"
+  fellow_count: 4         # those who completed; the cohort was larger
+  status: "completed"
+  founding: false
+  description: "The second formal cohort under the progression system."
+  report_url: ""
+
+- name: "Spring 2025"
+  slug: "spring-2025"
+  season: "Spring"
+  year: "2025"
+  date_range: "February – May 2025"
+  fellow_count: 13
+  status: "completed"
+  founding: true          # this adds the "Founding Cohort" badge
+  description: "The founding cohort — an experiment that became a permanent institution. At the end of this cohort, the Fellowship's progression system was established and contributors were placed at levels based on their history with CFK."
+  report_url: ""
+  # Add the report path here when it's ready:
+  # report_url: "/assets/downloads/reports/spring-2025.pdf"
