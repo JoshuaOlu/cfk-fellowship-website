@@ -100,5 +100,21 @@
 
   {% if page.extra_js %}{{ page.extra_js }}{% endif %}
 
+  <!-- Dynamically set --header-height so content is never obscured by the fixed header -->
+  <script>
+    function setHeaderHeight() {
+      var h = document.querySelector('.fixed-header');
+      if (h) {
+        document.documentElement.style.setProperty('--header-height', h.offsetHeight + 'px');
+      }
+    }
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+    // Re-measure after fonts load (Urbanist can shift layout slightly)
+    if (document.fonts) {
+      document.fonts.ready.then(setHeaderHeight);
+    }
+  </script>
+
 </body>
 </html>
