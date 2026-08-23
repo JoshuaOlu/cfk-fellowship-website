@@ -166,12 +166,16 @@ If a build fails, check the Actions tab on GitHub for the error. The most common
 
 ## Adding a new cohort page
 
-1. Create `cohorts/[season-year]/index.html`
-2. Copy `cohorts/spring-2026/index.html` as the template
-3. Update the `slug` in the `where:` filter to match the new cohort's slug
-4. Update the page title and description in the front matter
-5. Add the cohort entry to `_data/cohorts.yml`
-6. Create `_data/[season-year]-fellows.yml` for the current cohort Foundation Fellows
+This is covered step by step in [README-MAINTENANCE.md](./README-MAINTENANCE.md) under "Opening a new cohort for applications". The technical detail for developers is:
+
+Each cohort page at `cohorts/[season-year]/index.html` has two lines near the top that tie it to its data:
+
+```liquid
+{% assign cohort_data = site.data.cohorts | where: "slug", "autumn-2026" | first %}
+{% assign fellows = site.data.autumn-2026-fellows %}
+```
+
+The first line pulls the cohort's metadata (name, dates, fellow count, report link) from `_data/cohorts.yml` by matching the slug. The second line pulls the current cohort Foundation Fellows list from the named data file. Both slugs must match exactly — a typo here will produce a blank page with no error message.
 
 ---
 

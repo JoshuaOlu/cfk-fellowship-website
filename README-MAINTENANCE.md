@@ -56,8 +56,29 @@ status: "recruiting"
 
 **Step 4 — Create the cohort page folder and file:**
 - Create a new folder: `cohorts/spring-2027/`
-- Copy `cohorts/autumn-2026/index.html` into it
-- Update the `slug` reference and title inside the file
+- Copy `cohorts/autumn-2026/index.html` into that folder
+- Open the copied file and update these two lines near the top:
+
+```
+title: "Autumn 2026 Cohort"
+```
+Change to:
+```
+title: "Spring 2027 Cohort"
+```
+
+And:
+```
+{% assign cohort_data = site.data.cohorts | where: "slug", "autumn-2026" | first %}
+{% assign fellows = site.data.autumn-2026-fellows %}
+```
+Change to:
+```
+{% assign cohort_data = site.data.cohorts | where: "slug", "spring-2027" | first %}
+{% assign fellows = site.data.spring-2027-fellows %}
+```
+
+Those are the only lines you need to touch in that file.
 
 ---
 
@@ -78,6 +99,11 @@ No other changes needed. The announcement bar and nav button update automaticall
 Copy `_data/autumn-2026-fellows.yml` as a template and fill in the new Foundation Fellows' names and tracks.
 
 **Step 2 — Update the cohort page** to reference the new data file.
+Open `cohorts/spring-2027/index.html` and find this line near the top:
+```
+{% assign fellows = site.data.autumn-2026-fellows %}
+```
+Change `autumn-2026-fellows` to match your new data file name — e.g. `spring-2027-fellows`.
 
 **Step 3 — Update `_data/cohorts.yml`:** set `fellow_count` to the actual number selected.
 
