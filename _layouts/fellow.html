@@ -151,7 +151,7 @@ layout: base
   <div class="inner fellow-body-inner">
 
     {% if f.bio and f.bio != "" %}
-    <section class="fellow-section anim">
+    <section class="fellow-section">
       <div class="fellow-section-label">About</div>
       <p class="fellow-bio">{{ f.bio }}</p>
       {% if f.statement and f.statement != "" %}
@@ -160,10 +160,12 @@ layout: base
     </section>
     {% endif %}
 
-    {% if f.timeline and f.timeline.size > 0 %}
-    <section class="fellow-section anim">
+    {% if f.current_role or f.other_roles.size > 0 or f.timeline.size > 0 %}
+    <section class="fellow-section">
       <div class="fellow-section-label">Contribution Record</div>
+      {% if f.current_role and f.current_role != "" %}
       <div class="fellow-current-role">{{ f.current_role }}</div>
+      {% endif %}
       {% if f.other_roles and f.other_roles.size > 0 %}
         <ul class="fellow-other-roles">
           {% for role in f.other_roles %}
@@ -171,11 +173,13 @@ layout: base
           {% endfor %}
         </ul>
       {% endif %}
+      {% if f.timeline and f.timeline.size > 0 %}
       <div class="fellow-timeline">
         {% for entry in f.timeline %}
           <div class="fellow-timeline-entry">{{ entry }}</div>
         {% endfor %}
       </div>
+      {% endif %}
     </section>
     {% endif %}
 

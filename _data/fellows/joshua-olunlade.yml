@@ -19,15 +19,15 @@ other_roles:
   - "CFK Fellowship Program Coordinator"
   - "Chairman, Model NASS Steering Committee"
   - "CTRI Math Team Lead"
-# timeline:
-#   - "CTRI Math Team Lead (2023 – present)"
-#   - "CFK Executive Director (2023 – present)"
+timeline: []
 
 # ── PROFILE ──────────────────────────────────────
 bio: "Joshua Olunlade is the founder and Executive Director of Care for Knowledge, a Nigerian nonprofit building free educational resources for secondary school students. He leads CTRI's Mathematics team, chairs the Model NASS Steering Committee, and coordinates the CFK Fellowship. He is presently completing an MPhil in Engineering Education at the University of Cape Town."
+
 statement: "I was here before there was a Fellowship to speak of. Before the levels, before the cohorts, before any of it had structure or language. Just a few of us trying to figure out if we could actually make something useful. That early season changed how I see the world, and what has come since has continued to change me. The work teaches me things I did not expect to learn. The people I get to do it with show me things about commitment and community that I could not have found in a classroom. I am not here as someone who has arrived at anything. I am here as someone who started something and is still being shaped by it, and who thinks that is exactly how it should be."
 
 # ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
 linkedin:  "https://linkedin.com/in/joshuaolunlade"
 instagram: "https://instagram.com/josholunlade"
 x:         "https://x.com/josholunlade"
