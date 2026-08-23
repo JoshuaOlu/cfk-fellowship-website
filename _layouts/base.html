@@ -18,11 +18,47 @@
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:title" content="{% if page.og_title %}{{ page.og_title }}{% elsif page.title %}{{ page.title }} — CFK Fellowship{% else %}CFK Fellowship{% endif %}">
-  <meta property="og:description" content="{% if page.og_description %}{{ page.og_description }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:image" content="{{ site.url }}{% if page.og_image %}{{ page.og_image }}{% else %}/assets/images/og-image.jpg{% endif %}">
+  {% if page.fellow_slug and _fellow %}
+  <meta property="og:title" content="{{ _fellow.first_name }} {{ _fellow.last_name }} — CFK Fellowship">
+  {% elsif page.og_title %}
+  <meta property="og:title" content="{{ page.og_title }}">
+  {% elsif page.title %}
+  <meta property="og:title" content="{{ page.title }} — CFK Fellowship">
+  {% else %}
+  <meta property="og:title" content="CFK Fellowship">
+  {% endif %}
+  {% if page.fellow_slug and _fellow %}
+  <meta property="og:description" content="{{ _fellow.level }} · {{ _fellow.track }} · CFK Fellowship">
+  {% elsif page.og_description %}
+  <meta property="og:description" content="{{ page.og_description }}">
+  {% elsif page.description %}
+  <meta property="og:description" content="{{ page.description }}">
+  {% else %}
+  <meta property="og:description" content="{{ site.description }}">
+  {% endif %}
+  {% comment %}
+    OG image logic: Fellow profile pages use the Fellow's own photo if available.
+    All other pages use the site default or any page-specific og_image set in front matter.
+  {% endcomment %}
+  {% if page.fellow_slug %}
+    {% assign _fellow = site.data.fellows[page.fellow_slug] %}
+    {% if _fellow.photo and _fellow.photo != "" %}
+      <meta property="og:image" content="{{ site.url }}{{ _fellow.photo }}">
+    {% else %}
+      <meta property="og:image" content="{{ site.url }}/assets/images/og-image.jpg">
+    {% endif %}
+  {% elsif page.og_image %}
+    <meta property="og:image" content="{{ site.url }}{{ page.og_image }}">
+  {% else %}
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.jpg">
+  {% endif %}
   <meta property="og:site_name" content="CFK Fellowship">
   <meta name="twitter:card" content="summary_large_image">
+  {% if page.fellow_slug and _fellow and _fellow.photo and _fellow.photo != "" %}
+  <meta name="twitter:image" content="{{ site.url }}{{ _fellow.photo }}">
+  <meta name="twitter:title" content="{{ _fellow.first_name }} {{ _fellow.last_name }} — CFK Fellowship">
+  <meta name="twitter:description" content="{{ _fellow.level }} · {{ _fellow.track }} · CFK Fellowship">
+  {% endif %}
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
