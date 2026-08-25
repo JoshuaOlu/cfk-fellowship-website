@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20260005"
 slug: "olaoluwa-oni"
 first_name: "Olaoluwa"
 last_name: "Oni"
 photo: "/assets/images/fellows/olaoluwa-oni.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Foundation Fellow"
 track: "CFK Fellowship"
 cohort: "Spring 2026"
 joined: "Spring 2026"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "RMC Graphic Designer & Video Editor"
 other_roles: []
 timeline:
   - "RMC Graphic Designer & Video Editor (2026 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20240006"
 slug: "grace-chukwuma"
 first_name: "Grace"
 last_name: "Chukwuma"
 photo: "/assets/images/fellows/grace-chukwuma.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "alumni"
-level: "Associate Fellow"      # level held at time of exit
+level: "Associate Fellow"
 track: "WikiQuestions"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025 Founding Cohort"
 exited: "Dec, 2025"
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "WikiQuestions Program Coordinator"
 other_roles: []
 timeline:
   - "WikiQuestions Program Coordinator (Spring 2025 Founding Cohort – Dec, 2025)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

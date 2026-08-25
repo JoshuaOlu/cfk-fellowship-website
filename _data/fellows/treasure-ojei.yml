@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20250008"
 slug: "treasure-ojei"
 first_name: "Treasure"
 last_name: "Ojei"
 photo: "/assets/images/fellows/treasure-ojei.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Associate Fellow"
 track: "CFK Fellowship"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "WikiQuestions Program Admin"
 other_roles: []
 timeline:
   - "WikiQuestions Program Admin (2025 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

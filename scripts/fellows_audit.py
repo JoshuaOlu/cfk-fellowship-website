@@ -17,10 +17,10 @@ import csv
 import argparse
 from datetime import date
 
-REPO_ROOT   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FELLOWS_DIR = os.path.join(REPO_ROOT, '_data', 'fellows')
-STUBS_DIR   = os.path.join(REPO_ROOT, '_fellows')
-LOGS_DIR    = os.path.join(REPO_ROOT, 'scripts', 'logs')
+REPO_ROOT    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FELLOWS_DIR  = os.path.join(REPO_ROOT, '_data', 'fellows')
+STUBS_DIR    = os.path.join(REPO_ROOT, '_fellows')
+LOGS_DIR     = os.path.join(REPO_ROOT, 'scripts', 'logs')   # tracked in repo — audit history
 
 try:
     import yaml

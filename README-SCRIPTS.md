@@ -36,6 +36,55 @@ All commands are run from the **root of the repo folder** (the same folder that 
 
 ---
 
+## The Google Sheets template
+
+A formatted Excel/Google Sheets template lives at `scripts/templates/CFK_Fellowship_Data_Template.xlsx`.
+
+**Setting it up (one time):**
+1. Open Google Drive
+2. Click New → File upload → select `CFK_Fellowship_Data_Template.xlsx`
+3. Once uploaded, right-click it → Open with → Google Sheets
+4. It converts automatically — all dropdowns and formatting carry over
+5. Share it with Peace and anyone else who manages Fellow records
+
+**Four sheets in the template:**
+
+| Sheet | Purpose | Script to use after export |
+|---|---|---|
+| Fellows Directory | Full Fellow records — all fields, dropdowns on Level/Status/Track/Cohort, row colours by status | `fellows_import.py` |
+| Cohort Setup | Enter new Foundation Fellows when starting a cohort | `cohort_new.py --fellows` |
+| Targeted Updates | Promotions, alumni markings, role changes — slug + only the fields changing | `fellows_update.py --csv` |
+| Export Guide | Step-by-step export instructions — read this before exporting | — |
+
+**Dropdowns are linked to a hidden `_Lookups` sheet.** To add a new cohort name to the Cohort dropdown:
+1. In Google Sheets, go to the `_Lookups` sheet (click the `+` at the bottom to see hidden sheets, or unhide it)
+2. Add the new cohort name to column E
+3. The dropdown in Fellows Directory updates automatically
+
+**Exporting as CSV:**
+1. Click the sheet tab you want to export (e.g. "Fellows Directory")
+2. File → Download → Comma Separated Values (.csv)
+3. Rename the file clearly (e.g. `fellows_bios_aug2026.csv`)
+4. Run the relevant script (see Export Guide sheet for exact commands)
+
+**Yellow rows are examples — delete them before exporting.**
+
+---
+
+## CSV templates
+
+Three CSV templates live in `scripts/templates/`. These are the raw format the scripts consume — use them if you're working from the command line directly without the Google Sheet.
+
+| File | Used with |
+|---|---|
+| `fellows_full_template.csv` | `fellows_import.py --full` or `fellow_add.py --csv` |
+| `fellows_update_template.csv` | `fellows_update.py --csv` |
+| `cohort_fellows_template.csv` | `cohort_new.py --fellows` or `cohort_graduate.py --csv` |
+
+Each template has one example row showing the correct format. Delete the example row before using.
+
+---
+
 ## The standard CSV format
 
 Every script that reads or writes a CSV uses these column headers:

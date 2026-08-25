@@ -1,0 +1,16 @@
+# Generated export files — local only, not tracked in repo
+scripts/exports/
+
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Ruby
+.bundle/
+vendor/

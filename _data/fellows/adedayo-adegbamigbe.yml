@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20240008"
 slug: "adedayo-adegbamigbe"
 first_name: "Adedayo"
 last_name: "Adegbamigbe"
 photo: "/assets/images/fellows/adedayo-adegbamigbe.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Associate Fellow"
 track: "WikiQuestions"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "WikiQuestions Team Lead"
 other_roles: []
 timeline:
   - "WikiQuestions Team Lead (2025 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

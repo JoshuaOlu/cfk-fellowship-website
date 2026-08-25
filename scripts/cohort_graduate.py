@@ -41,6 +41,66 @@ STUBS_DIR   = os.path.join(REPO_ROOT, '_fellows')
 DATA_DIR    = os.path.join(REPO_ROOT, '_data')
 
 sys.path.insert(0, os.path.dirname(__file__))
+
+def clean_text(value):
+    """
+    Fix common encoding garbling from Google Sheets CSV exports.
+    Google Sheets exports UTF-8 without BOM; if read with wrong encoding,
+    special characters appear garbled. This fixes the most common cases.
+    """
+    if not value:
+        return value
+    # Try to fix UTF-8 bytes misread as latin-1/cp1252
+    try:
+        fixed = value.encode('latin-1').decode('utf-8')
+        return fixed
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        pass
+    # Manual fallback for the most common garbled sequences
+    replacements = {
+        'â€"': '—',   # em dash
+        'â€™': "'",   # right single quote
+        'â€˜': "'",   # left single quote
+        'â€œ': '"',   # left double quote
+        'â€':  '"',   # right double quote
+        'â€¦': '…',   # ellipsis
+        'Ã©':  'é',
+        'Ã¨':  'è',
+        'Ã ':  'à',
+        'Ã¢':  'â',
+        'Ã®':  'î',
+        'Ã´':  'ô',
+        'Ã»':  'û',
+        'Ã§':  'ç',
+        'Ã«':  'ë',
+        'Ã¯':  'ï',
+        'Ã¼':  'ü',
+        'Ã¶':  'ö',
+        'Ã¤':  'ä',
+        'Ã±':  'ñ',
+    }
+    for garbled, correct in replacements.items():
+        value = value.replace(garbled, correct)
+    return value
+
+def clean_row(row):
+    """Apply clean_text to every value in a CSV row dict."""
+    return {k: clean_text(v) if isinstance(v, str) else v for k, v in row.items()}
+
+def normalise_headers(reader):
+    """
+    Strip asterisks and extra whitespace from CSV column headers.
+    This allows headers like 'slug *' or 'first_name *' (used in the
+    Google Sheets template as visual hints) to be read as 'slug', 'first_name'.
+    """
+    reader.fieldnames = [
+        f.replace('*', '').strip()
+        for f in (reader.fieldnames or [])
+    ]
+    return reader
+
+
+
 from fellows_import import write_fellow, load_existing
 from fellow_add import make_slug, create_stub
 
@@ -139,13 +199,14 @@ def main():
     # Load graduating CSV
     with open(csv_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
+        normalise_headers(reader)
         headers = reader.fieldnames or []
         required = ['first_name', 'last_name', 'track']
         missing = [h for h in required if h not in headers]
         if missing:
             print(f"ERROR: CSV missing required columns: {', '.join(missing)}")
             sys.exit(1)
-        rows = list(reader)
+        rows = [clean_row(r) for r in reader]
 
     if not rows:
         print("ERROR: CSV is empty.")

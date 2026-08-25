@@ -1,26 +1,36 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20240018"
 slug: "oluwafunmilade-adewale"
 first_name: "Oluwafunmilade"
 last_name: "Adewale"
 photo: "/assets/images/fellows/oluwafunmilade-adewale.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Senior Fellow"
 track: "Model NASS"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "Model NASS Content Development Lead"
 other_roles:
   - "CFK Legal Company Secretary"
 timeline:
   - "Model NASS Content Development Lead (2025 – present)"
   - "CFK Legal Company Secretary (2025 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

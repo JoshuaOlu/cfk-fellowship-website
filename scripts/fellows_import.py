@@ -49,6 +49,65 @@ except ImportError:
     print("ERROR: PyYAML is not installed. Run: pip install pyyaml")
     sys.exit(1)
 
+def clean_text(value):
+    """
+    Fix common encoding garbling from Google Sheets CSV exports.
+    Google Sheets exports UTF-8 without BOM; if read with wrong encoding,
+    special characters appear garbled. This fixes the most common cases.
+    """
+    if not value:
+        return value
+    # Try to fix UTF-8 bytes misread as latin-1/cp1252
+    try:
+        fixed = value.encode('latin-1').decode('utf-8')
+        return fixed
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        pass
+    # Manual fallback for the most common garbled sequences
+    replacements = {
+        'â€"': '—',   # em dash
+        'â€™': "'",   # right single quote
+        'â€˜': "'",   # left single quote
+        'â€œ': '"',   # left double quote
+        'â€':  '"',   # right double quote
+        'â€¦': '…',   # ellipsis
+        'Ã©':  'é',
+        'Ã¨':  'è',
+        'Ã ':  'à',
+        'Ã¢':  'â',
+        'Ã®':  'î',
+        'Ã´':  'ô',
+        'Ã»':  'û',
+        'Ã§':  'ç',
+        'Ã«':  'ë',
+        'Ã¯':  'ï',
+        'Ã¼':  'ü',
+        'Ã¶':  'ö',
+        'Ã¤':  'ä',
+        'Ã±':  'ñ',
+    }
+    for garbled, correct in replacements.items():
+        value = value.replace(garbled, correct)
+    return value
+
+def clean_row(row):
+    """Apply clean_text to every value in a CSV row dict."""
+    return {k: clean_text(v) if isinstance(v, str) else v for k, v in row.items()}
+
+def normalise_headers(reader):
+    """
+    Strip asterisks and extra whitespace from CSV column headers.
+    This allows headers like 'slug *' or 'first_name *' (used in the
+    Google Sheets template as visual hints) to be read as 'slug', 'first_name'.
+    """
+    reader.fieldnames = [
+        f.replace('*', '').strip()
+        for f in (reader.fieldnames or [])
+    ]
+    return reader
+
+
+
 ALL_COLUMNS = [
     'slug', 'vid', 'first_name', 'last_name', 'photo',
     'status', 'level', 'track', 'cohort', 'joined', 'exited',
@@ -181,13 +240,14 @@ def main():
 
     with open(csv_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
+        normalise_headers(reader)
         csv_headers = reader.fieldnames or []
 
         # Verify headers
         required = ['slug'] + (fields_to_update if not args.full else [])
         verify_headers(csv_headers, required)
 
-        rows = list(reader)
+        rows = [clean_row(r) for r in reader]
 
     if not rows:
         print("CSV is empty — nothing to do.")
@@ -225,28 +285,47 @@ def main():
                 # If cell is blank and field is in --fields, we do NOT overwrite
                 # (blank = "not provided", not "intentionally cleared")
 
-        write_fellow(slug, merged, dry_run=args.dry_run)
+        # Compare merged data against existing — only write if something changed
+        has_changes = is_new
+        if not is_new:
+            for key in merged:
+                existing_val = str(existing.get(key, '') or '')
+                new_val      = str(merged.get(key, '') or '')
+                if existing_val != new_val:
+                    has_changes = True
+                    break
 
-        if is_new:
-            created.append(slug)
+        if has_changes:
+            write_fellow(slug, merged, dry_run=args.dry_run)
+            if is_new:
+                created.append(slug)
+            else:
+                updated.append(slug)
         else:
-            updated.append(slug)
+            skipped.append(f"  {slug}: no changes")
 
     # Summary
+    unchanged = [s for s in skipped if 'no changes' in s]
+    errors    = [s for s in skipped if 'no changes' not in s]
+
     print(f"\n{'DRY RUN — ' if args.dry_run else ''}IMPORT COMPLETE")
     print(f"{'─'*40}")
     if created:
-        print(f"  Created ({len(created)}): {', '.join(created)}")
+        print(f"  Created  ({len(created)}):   {', '.join(created)}")
     if updated:
-        print(f"  Updated ({len(updated)}): {', '.join(updated)}")
-    if skipped:
-        print(f"  Skipped ({len(skipped)}):")
-        for s in skipped:
+        print(f"  Updated  ({len(updated)}):   {', '.join(updated)}")
+    if unchanged:
+        print(f"  Unchanged ({len(unchanged)}): no changes needed")
+    if errors:
+        print(f"  Skipped  ({len(errors)}):")
+        for s in errors:
             print(s)
     if fields_to_update:
-        print(f"\n  Fields updated: {', '.join(fields_to_update)}")
+        print(f"\n  Fields checked: {', '.join(fields_to_update)}")
     if not args.dry_run and (created or updated):
         print(f"\n  Review the changes, then commit and push to GitHub.")
+    elif not args.dry_run and not created and not updated:
+        print(f"\n  Nothing changed — no files were written.")
 
 
 if __name__ == '__main__':

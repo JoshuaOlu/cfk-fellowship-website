@@ -1,14 +1,19 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20240001"
 slug: "israel-oladejo"
 first_name: "Israel"
 last_name: "Oladejo"
 photo: "/assets/images/fellows/israel-oladejo.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Senior Fellow"
 track: "CFK Fellowship"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "RMC Team Lead"
 other_roles:
   - "Partnership and Communications Lead"
@@ -16,12 +21,17 @@ other_roles:
 timeline:
   - "RMC Team Lead (2025 – present)"
   - "Partnership and Communications Lead (2025 – present)"
-bio: ""
-statement: ""
-linkedin: ""
+
+# ── PROFILE ──────────────────────────────────────
+bio: "Israel Oladejo is an Associate Fellow contributing through the CFK Fellowship track."
+statement: "I joined because I wanted to do work that mattered beyond my immediate circle."
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  "https://linkedin.com/in/israel-oladejo"
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

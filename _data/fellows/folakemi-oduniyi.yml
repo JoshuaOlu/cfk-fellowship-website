@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20260008"
 slug: "folakemi-oduniyi"
 first_name: "Folakemi"
 last_name: "Oduniyi"
 photo: "/assets/images/fellows/folakemi-oduniyi.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Foundation Fellow"
 track: "WikiQuestions"
 cohort: "Spring 2026"
 joined: "Spring 2026"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "WikiQuestions Team Member"
 other_roles: []
 timeline:
   - "WikiQuestions Team Member (2026 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

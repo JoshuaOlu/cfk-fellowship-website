@@ -47,7 +47,25 @@ _data/
 
 → **[README-FELLOWS.md](./README-FELLOWS.md)** — everything about Fellow profiles: the YAML schema, what each field means, how to add social links, what to do when a Fellow graduates, advances, or leaves.
 
+→ **[README-SCRIPTS.md](./README-SCRIPTS.md)** — the automation scripts. Export/import Fellows as CSV, bulk-update profiles, graduate cohorts, and set up new cohorts with a single command.
+
 → **[README-TECHNICAL.md](./README-TECHNICAL.md)** — how to run the site locally, how Jekyll collections work, folder structure, and deployment.
+
+---
+
+## The data management toolkit
+
+For team members managing Fellow records and cohort data, two tools exist alongside this repo:
+
+**Google Sheets template** (`scripts/templates/CFK_Fellowship_Data_Template.xlsx`)
+Upload this to Google Drive and it converts automatically to a Google Sheet. Four sheets:
+- **Fellows Directory** — full Fellow records with dropdowns for Level, Status, Track, Cohort
+- **Cohort Setup** — enter new Foundation Fellows when starting a new cohort
+- **Targeted Updates** — record promotions, alumni markings, role changes
+- **Export Guide** — step-by-step instructions for exporting each sheet as CSV
+
+**CSV templates** (`scripts/templates/`)
+The raw CSV format the scripts consume. Use these if you're working directly from the command line without the Google Sheet.
 
 ---
 

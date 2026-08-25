@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20250007"
 slug: "priscilla-ajayi"
 first_name: "Priscilla"
 last_name: "Ajayi"
 photo: "/assets/images/fellows/priscilla-ajayi.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "alumni"
-level: "Associate Fellow"      # level held at time of exit
+level: "Associate Fellow"
 track: "WikiQuestions"
-cohort: "Autumn 2025"
+cohort: "Spring 2025 Founding Cohort"
 joined: "Autumn 2025"
 exited: "Dec, 2025"
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "WikiQuestions Digitization Fellow"
 other_roles: []
 timeline:
   - "WikiQuestions Digitization Fellow (Autumn 2025 – Dec, 2025)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

@@ -1,26 +1,36 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20240021"
 slug: "cornelius-aboderin"
 first_name: "Cornelius"
 last_name: "Aboderin"
 photo: "/assets/images/fellows/cornelius-aboderin.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Senior Fellow"
 track: "CTRI"
 cohort: "Spring 2025 Founding Cohort"
 joined: "Spring 2025"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "CTRI Program Coordinator"
 other_roles:
   - "RMC Graphic Designer"
 timeline:
   - "CTRI Program Coordinator (2025 – present)"
   - "RMC Graphic Designer (2025 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

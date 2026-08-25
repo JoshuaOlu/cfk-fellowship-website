@@ -1,24 +1,34 @@
+# ── IDENTITY ─────────────────────────────────────
 vid: "20260003"
 slug: "samuel-owoyale"
 first_name: "Samuel"
 last_name: "Owoyale"
 photo: "/assets/images/fellows/samuel-owoyale.jpg"
+
+# ── FELLOWSHIP STATUS ─────────────────────────────
 status: "active"
 level: "Foundation Fellow"
 track: "CFK Fellowship"
 cohort: "Spring 2026"
 joined: "Spring 2026"
 exited: ""
+
+# ── CONTRIBUTION RECORD ───────────────────────────
 current_role: "RMC Graphic Designer"
 other_roles: []
 timeline:
   - "RMC Graphic Designer (2026 – present)"
+
+# ── PROFILE ──────────────────────────────────────
 bio: ""
 statement: ""
-linkedin: ""
+
+# ── SOCIAL ───────────────────────────────────────
+# Always use the full URL for every platform.
+linkedin:  ""
 instagram: ""
-x: ""
-substack: ""
-orcid: ""
-youtube: ""
-tiktok: ""
+x:         ""
+substack:  ""
+orcid:     ""
+youtube:   ""
+tiktok:    ""

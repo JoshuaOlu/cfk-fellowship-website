@@ -19,11 +19,13 @@ import os
 import sys
 import csv
 import argparse
+from datetime import date
 
 # ── Make sure we run from the repo root ──────────────────────────────────────
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FELLOWS_DIR = os.path.join(REPO_ROOT, '_data', 'fellows')
-SCRIPTS_DIR = os.path.join(REPO_ROOT, 'scripts')
+REPO_ROOT    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FELLOWS_DIR  = os.path.join(REPO_ROOT, '_data', 'fellows')
+SCRIPTS_DIR  = os.path.join(REPO_ROOT, 'scripts')
+EXPORTS_DIR  = os.path.join(SCRIPTS_DIR, 'exports')
 
 try:
     import yaml
@@ -70,8 +72,10 @@ def load_fellow(path):
 
 def main():
     parser = argparse.ArgumentParser(description='Export all Fellow YAMLs to CSV.')
-    parser.add_argument('--output', default=os.path.join(SCRIPTS_DIR, 'fellows_export.csv'),
-                        help='Output CSV path (default: scripts/fellows_export.csv)')
+    today = date.today().strftime('%Y-%m-%d')
+    default_output = os.path.join(EXPORTS_DIR, f'fellows_export_{today}.csv')
+    parser.add_argument('--output', default=default_output,
+                        help=f'Output CSV path (default: scripts/exports/fellows_export_YYYY-MM-DD.csv)')
     args = parser.parse_args()
 
     if not os.path.isdir(FELLOWS_DIR):
@@ -105,9 +109,9 @@ def main():
     # Sort by last name then first name
     fellows.sort(key=lambda f: (f.get('last_name', ''), f.get('first_name', '')))
 
-    # Write CSV
+    # Write CSV — ensure exports/ folder exists
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
-    with open(args.output, 'w', newline='', encoding='utf-8') as f:
+    with open(args.output, 'w', newline='', encoding='utf-8-sig') as f:  # BOM ensures Excel/Sheets reads em dashes and special chars correctly
         writer = csv.DictWriter(f, fieldnames=COLUMNS, extrasaction='ignore')
         writer.writeheader()
         writer.writerows(fellows)
