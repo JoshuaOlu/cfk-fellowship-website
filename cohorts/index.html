@@ -5,6 +5,13 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
 ---
 
 {% assign cohorts = site.data.cohorts %}
+{% assign cur = site.data.current_cohort %}
+{% if cur.register_url and cur.register_url != "" %}
+  {% assign reg_url = cur.register_url %}
+{% else %}
+  {% assign reg_url = site.register_url %}
+{% endif %}
+{% assign int_url = site.interest_url %}
 
 <header class="page-header">
   <div class="inner page-header-inner">
@@ -16,13 +23,14 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
 
 <main style="padding:4rem 0 6rem;">
   <div class="inner">
-    <div class="cohorts-grid">
-      {% for cohort in cohorts %}
+
+    <!-- ── FIRST THREE COHORTS — always expanded ── -->
+    <div class="cohorts-grid" id="cohorts-recent">
+      {% for cohort in cohorts limit:3 %}
       {% assign card_class = "cohort-summary-card" %}
       {% if cohort.status == "active" %}{% assign card_class = "cohort-summary-card cohort-active" %}{% endif %}
 
       <div class="{{ card_class }}">
-        <!-- Badges -->
         {% if cohort.status == "active" %}
           <span class="cohort-badge cohort-badge-active">Now Active</span>
         {% elsif cohort.founding %}
@@ -33,31 +41,91 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
 
         <div class="cohort-summary-name">{{ cohort.name }}</div>
         <div class="cohort-summary-dates">{{ cohort.date_range }}</div>
-
         {% if cohort.description %}
           <p class="cohort-summary-desc">{{ cohort.description }}</p>
         {% endif %}
-
         <div class="cohort-meta-row">
           <div class="cohort-meta-item">
             <span class="cohort-meta-label">Foundation Fellows</span>
             <span class="cohort-meta-val">{{ cohort.fellow_count }}</span>
           </div>
         </div>
-
-        <!-- Report link if available -->
         {% if cohort.report_url and cohort.report_url != "" %}
           <a href="{{ cohort.report_url }}" class="cohort-report-btn" target="_blank" style="margin-bottom:1rem;display:inline-flex;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Read Cohort Report
           </a>
         {% endif %}
-
         <a href="/cohorts/{{ cohort.slug }}/" class="cohort-link">
           {% if cohort.status == "active" %}Meet the Fellows →{% else %}See this cohort →{% endif %}
         </a>
       </div>
       {% endfor %}
     </div>
+
+    <!-- ── EARLIER COHORTS — collapsible ── -->
+    {% assign cohort_count = cohorts | size %}
+    {% if cohort_count > 3 %}
+    <div class="earlier-cohorts-wrap" style="margin-top:3rem;">
+
+      <button class="earlier-cohorts-btn" aria-expanded="false" aria-controls="earlier-cohorts"
+              onclick="toggleEarlierCohorts(this)">
+        <span class="earlier-cohorts-chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        Earlier Cohorts · {{ cohort_count | minus: 3 }} more
+      </button>
+
+      <div class="earlier-cohorts-body collapsed" id="earlier-cohorts">
+        <div class="cohorts-grid" style="margin-top:2rem;">
+          {% for cohort in cohorts offset:3 %}
+          <div class="cohort-summary-card">
+            {% if cohort.founding %}
+              <span class="cohort-badge cohort-badge-founding">Founding Cohort</span>
+            {% else %}
+              <span class="cohort-badge cohort-badge-completed">Completed</span>
+            {% endif %}
+            <div class="cohort-summary-name">{{ cohort.name }}</div>
+            <div class="cohort-summary-dates">{{ cohort.date_range }}</div>
+            {% if cohort.description %}
+              <p class="cohort-summary-desc">{{ cohort.description }}</p>
+            {% endif %}
+            <div class="cohort-meta-row">
+              <div class="cohort-meta-item">
+                <span class="cohort-meta-label">Foundation Fellows</span>
+                <span class="cohort-meta-val">{{ cohort.fellow_count }}</span>
+              </div>
+            </div>
+            {% if cohort.report_url and cohort.report_url != "" %}
+              <a href="{{ cohort.report_url }}" class="cohort-report-btn" target="_blank" style="margin-bottom:1rem;display:inline-flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Read Cohort Report
+              </a>
+            {% endif %}
+            <a href="/cohorts/{{ cohort.slug }}/" class="cohort-link">See this cohort →</a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
   </div>
 </main>
+
+<script>
+function toggleEarlierCohorts(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  var body = document.getElementById('earlier-cohorts');
+  if (expanded) {
+    btn.setAttribute('aria-expanded', 'false');
+    body.classList.add('collapsed');
+    body.style.maxHeight = '0';
+  } else {
+    btn.setAttribute('aria-expanded', 'true');
+    body.classList.remove('collapsed');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+</script>
