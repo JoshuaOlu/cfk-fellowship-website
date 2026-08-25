@@ -793,15 +793,21 @@ a   { text-decoration: none; }
   font-size: 0.88rem; color: #ffffff; font-weight: 600;
   background: none;
 }
-.fellow-meta-link {
-  color: #ffffff; font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  transition: border-color 0.2s, color 0.2s;
+/* Cohort link inside the fellow profile meta row */
+.fellow-profile-info .fellow-meta-value a.fellow-meta-link,
+.fellow-header .fellow-meta-value a.fellow-meta-link {
+  color: rgba(255,255,255,0.85) !important;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  transition: color 0.2s, border-color 0.2s;
 }
-.fellow-meta-link:hover {
-  color: var(--cyan);
+.fellow-profile-info .fellow-meta-value a.fellow-meta-link:hover,
+.fellow-header .fellow-meta-value a.fellow-meta-link:hover {
+  color: var(--cyan) !important;
   border-bottom-color: var(--cyan);
 }
+
 
 /* Social links on profile */
 .fellow-social { display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -952,15 +958,7 @@ a   { text-decoration: none; }
   font-size: 0.88rem; color: #ffffff; font-weight: 600;
   background: none;
 }
-.fellow-meta-link {
-  color: #ffffff; font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  transition: border-color 0.2s, color 0.2s;
-}
-.fellow-meta-link:hover {
-  color: var(--cyan);
-  border-bottom-color: var(--cyan);
-}
+
 
 /* Social links */
 .fellow-social { display: flex; gap: 0.6rem; flex-wrap: wrap; }
