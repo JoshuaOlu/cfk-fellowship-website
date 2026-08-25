@@ -7,6 +7,22 @@ description: "A structured volunteer community for young Nigerians contributing 
 {% assign status = site.data.site_status.status %}
 {% assign cohort = site.data.current_cohort %}
 
+{% comment %}── DYNAMIC STAT COUNTS ──────────────────────────────────────
+  cohort_count:   total number of cohorts ever run
+  active_count:   all active Fellows (with pages) + current cohort Foundation Fellows
+  all_time_count: every person who has ever been a Fellow (active + alumni + emeritus + current cohort)
+{% endcomment %}
+{% assign cohort_count = site.data.cohorts | size %}
+
+{% assign fellows_with_pages = site.data.fellows | size %}
+
+{% comment %}Add current cohort Foundation Fellows (no pages yet){% endcomment %}
+{% assign current_cohort_key = cohort.slug | append: "-fellows" %}
+{% assign current_cohort_list = site.data[current_cohort_key] %}
+{% assign current_cohort_size = current_cohort_list | size %}
+
+{% assign total_fellows = fellows_with_pages | plus: current_cohort_size %}
+
 <!-- ── HERO ── -->
 <header class="hero" role="banner">
   <div class="hero-bg" aria-hidden="true"></div>
@@ -48,7 +64,7 @@ description: "A structured volunteer community for young Nigerians contributing 
         {% endif %}
       </div>
 
-      <!-- Stats -->
+      <!-- Stats — all counts are automatic -->
       <div class="hero-stats" role="list">
         <div class="hero-stat" role="listitem">
           <div class="hero-stat-num" data-count="4">0</div>
@@ -59,12 +75,12 @@ description: "A structured volunteer community for young Nigerians contributing 
           <div class="hero-stat-label">Week Foundation Cohort</div>
         </div>
         <div class="hero-stat" role="listitem">
-          <div class="hero-stat-num" data-count="2">0</div>
-          <div class="hero-stat-label">Cohorts Per Year</div>
+          <div class="hero-stat-num" data-count="{{ cohort_count }}">0</div>
+          <div class="hero-stat-label">Cohorts and Counting</div>
         </div>
         <div class="hero-stat" role="listitem">
-          <div class="hero-stat-num" data-count="4">0</div>
-          <div class="hero-stat-label">Tracks to Join</div>
+          <div class="hero-stat-num" data-count="{{ total_fellows }}">0</div>
+          <div class="hero-stat-label">Fellows, Past and Present</div>
         </div>
       </div>
     </div>

@@ -45,20 +45,24 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
         {% if cohort.description %}
           <p class="cohort-summary-desc">{{ cohort.description }}</p>
         {% endif %}
-        {% comment %}Count Fellows dynamically from _data/fellows/ by cohort name{% endcomment %}
-        {% assign cohort_fellow_count = 0 %}
-        {% for pair in all_fellows %}
-          {% assign f = pair[1] %}
-          {% if f.cohort == cohort.name or f.cohort contains cohort.name %}
-            {% assign cohort_fellow_count = cohort_fellow_count | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-        {% comment %}For active cohorts, also count from the cohort Fellows list{% endcomment %}
+        {% comment %}
+          Count logic:
+          - Active cohorts: count from the cohort Fellows list file (e.g. autumn-2026-fellows.yml)
+            This includes Foundation Fellows who don't have individual pages yet.
+          - Completed cohorts: count from _data/fellows/ by matching cohort name.
+        {% endcomment %}
         {% if cohort.status == "active" %}
-          {% assign active_list = site.data[cohort.slug | append: "-fellows"] %}
-          {% if active_list %}
-            {% assign cohort_fellow_count = active_list | size %}
-          {% endif %}
+          {% assign cohort_list_key = cohort.slug | append: "-fellows" %}
+          {% assign cohort_list = site.data[cohort_list_key] %}
+          {% assign cohort_fellow_count = cohort_list | size %}
+        {% else %}
+          {% assign cohort_fellow_count = 0 %}
+          {% for pair in all_fellows %}
+            {% assign f = pair[1] %}
+            {% if f.cohort == cohort.name or f.cohort contains cohort.name %}
+              {% assign cohort_fellow_count = cohort_fellow_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
         {% endif %}
         <div class="cohort-meta-row">
           <div class="cohort-meta-item">
