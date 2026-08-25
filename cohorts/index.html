@@ -6,6 +6,7 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
 
 {% assign cohorts = site.data.cohorts %}
 {% assign cur = site.data.current_cohort %}
+{% assign all_fellows = site.data.fellows %}
 {% if cur.register_url and cur.register_url != "" %}
   {% assign reg_url = cur.register_url %}
 {% else %}
@@ -17,7 +18,7 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
   <div class="inner page-header-inner">
     <span class="page-eyebrow">CFK Fellowship · Cohort Archive</span>
     <h1 class="page-title">All Cohorts</h1>
-    <p class="page-intro">Every intake of Foundation Fellows, from the founding cohort to the present.</p>
+    <p class="page-intro">Every cohort intake, from the founding cohort to the present.</p>
   </div>
 </header>
 
@@ -44,10 +45,25 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
         {% if cohort.description %}
           <p class="cohort-summary-desc">{{ cohort.description }}</p>
         {% endif %}
+        {% comment %}Count Fellows dynamically from _data/fellows/ by cohort name{% endcomment %}
+        {% assign cohort_fellow_count = 0 %}
+        {% for pair in all_fellows %}
+          {% assign f = pair[1] %}
+          {% if f.cohort == cohort.name or f.cohort contains cohort.name %}
+            {% assign cohort_fellow_count = cohort_fellow_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% comment %}For active cohorts, also count from the cohort Fellows list{% endcomment %}
+        {% if cohort.status == "active" %}
+          {% assign active_list = site.data[cohort.slug | append: "-fellows"] %}
+          {% if active_list %}
+            {% assign cohort_fellow_count = active_list | size %}
+          {% endif %}
+        {% endif %}
         <div class="cohort-meta-row">
           <div class="cohort-meta-item">
-            <span class="cohort-meta-label">Foundation Fellows</span>
-            <span class="cohort-meta-val">{{ cohort.fellow_count }}</span>
+            <span class="cohort-meta-label">Fellows</span>
+            <span class="cohort-meta-val">{{ cohort_fellow_count }}</span>
           </div>
         </div>
         {% if cohort.report_url and cohort.report_url != "" %}
@@ -92,8 +108,15 @@ description: Every CFK Fellowship cohort — the Foundation Fellows who joined, 
             {% endif %}
             <div class="cohort-meta-row">
               <div class="cohort-meta-item">
-                <span class="cohort-meta-label">Foundation Fellows</span>
-                <span class="cohort-meta-val">{{ cohort.fellow_count }}</span>
+                <span class="cohort-meta-label">Fellows</span>
+                {% assign older_count = 0 %}
+                {% for pair in all_fellows %}
+                  {% assign f = pair[1] %}
+                  {% if f.cohort == cohort.name or f.cohort contains cohort.name %}
+                    {% assign older_count = older_count | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+                <span class="cohort-meta-val">{{ older_count }}</span>
               </div>
             </div>
             {% if cohort.report_url and cohort.report_url != "" %}

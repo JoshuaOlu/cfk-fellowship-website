@@ -18,7 +18,14 @@ description: "The Spring 2026 CFK Fellowship cohort — the second intake under 
   <div class="inner page-header-inner">
     <span class="page-eyebrow">CFK Fellowship · <a href="/cohorts/" style="color:var(--cyan);opacity:0.7;">Cohorts</a></span>
     <h1 class="page-title">{{ cohort_data.name }} Cohort</h1>
-    <p class="page-intro">{{ cohort_data.date_range }} · Completed</p>
+    {% assign completed_count = 0 %}
+    {% for pair in site.data.fellows %}
+      {% assign f = pair[1] %}
+      {% if f.cohort == cohort_data.name or f.cohort contains cohort_data.name %}
+        {% assign completed_count = completed_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    <p class="page-intro">{{ cohort_data.date_range }} · {{ completed_count }} Fellows · Completed</p>
     <p class="page-intro" style="margin-top:0.75rem;">{{ cohort_data.description }}</p>
     {% if cohort_data.report_url and cohort_data.report_url != "" %}
     <a href="{{ cohort_data.report_url }}" target="_blank" class="cohort-report-btn" style="margin-top:1.5rem;display:inline-flex;">

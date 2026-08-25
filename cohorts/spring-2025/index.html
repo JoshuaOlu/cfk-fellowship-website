@@ -19,7 +19,14 @@ description: "The Spring 2025 CFK Fellowship Founding Cohort — where the Fello
     <span class="page-eyebrow">CFK Fellowship · <a href="/cohorts/" style="color:var(--cyan);opacity:0.7;">Cohorts</a></span>
     <div style="display:inline-block;background:rgba(255,27,162,0.1);border:1px solid rgba(255,27,162,0.35);color:#FF1BA2;font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;margin-bottom:1rem;">Founding Cohort</div>
     <h1 class="page-title">Spring 2025</h1>
-    <p class="page-intro">{{ cohort_data.date_range }} · Completed</p>
+    {% assign completed_count = 0 %}
+    {% for pair in site.data.fellows %}
+      {% assign f = pair[1] %}
+      {% if f.cohort == cohort_data.name or f.cohort contains cohort_data.name %}
+        {% assign completed_count = completed_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    <p class="page-intro">{{ cohort_data.date_range }} · {{ completed_count }} Fellows · Completed</p>
     <p class="page-intro" style="margin-top:0.75rem;">{{ cohort_data.description }}</p>
     {% if cohort_data.report_url and cohort_data.report_url != "" %}
     <a href="{{ cohort_data.report_url }}" target="_blank" class="cohort-report-btn" style="margin-top:1.5rem;display:inline-flex;">

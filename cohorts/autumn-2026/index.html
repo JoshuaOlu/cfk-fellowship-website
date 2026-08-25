@@ -11,7 +11,9 @@ description: "Meet the Autumn 2026 CFK Fellowship Foundation Fellows — current
   <div class="inner page-header-inner">
     <span class="page-eyebrow">CFK Fellowship · <a href="/cohorts/" style="color:var(--cyan);opacity:0.7;">Cohorts</a></span>
     <h1 class="page-title">{{ cohort_data.name }} Cohort</h1>
-    <p class="page-intro">{{ cohort_data.date_range }} · {{ cohort_data.fellow_count }} Foundation Fellows · Currently active</p>
+    {% assign active_fellows_list = site.data["autumn-2026-fellows"] %}
+    {% assign active_count = active_fellows_list | size %}
+    <p class="page-intro">{{ cohort_data.date_range }} · {{ active_count }} Fellows · Currently active</p>
     <p class="page-intro" style="margin-top:0.75rem;">{{ cohort_data.description }}</p>
   </div>
 </header>
@@ -19,7 +21,7 @@ description: "Meet the Autumn 2026 CFK Fellowship Foundation Fellows — current
 <main style="padding:4rem 0 6rem;background:var(--white);">
   <div class="inner">
     <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">
-      Foundation Fellows · In Progress
+      Fellows · In Progress
     </div>
     <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2.5rem;max-width:520px;">These Fellows are currently in their 16-week Foundation Cohort. Permanent profile pages will be created when they graduate.</p>
 
