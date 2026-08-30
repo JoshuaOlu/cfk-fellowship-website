@@ -33,3 +33,6 @@ substack:  "https://substack.com/@treasurespen?r=3apan4&utm_medium=ios&utm_sourc
 orcid:     ""
 youtube:   "https://youtube.com/@uncoveringtreasures?si=n3hZRwOsrJ7U-Dhf"
 tiktok:    "https://tiktok.com/Treasure Ojei"
+
+# ── CONSENT & VISIBILITY ─────────────────────────────
+profile_visible: true

@@ -34,3 +34,6 @@ substack:  "https://josholunlade.substack.com"
 orcid:     "https://orcid.org/0009-0009-8152-3578"
 youtube:   "https://youtube.com/@josholunlade"
 tiktok:    ""
+
+# ── CONSENT & VISIBILITY ─────────────────────────────
+profile_visible: true

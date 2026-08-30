@@ -20,73 +20,88 @@
   last_name: "Durosomo"
   track: "Model NASS"
   photo: ""
+  profile_visible: true
 
 - first_name: "Joan"
   last_name: "Adeleye"
   track: "CFK Fellowship"
   photo: ""
+  profile_visible: true
 
 - first_name: "Preciousgift"
   last_name: "Chimdiebube"
   track: "CFK Fellowship"
   photo: ""
+  profile_visible: true
 
 - first_name: "Kaosara"
   last_name: "Odumuyiwa"
   track: "CTRI"
   photo: ""
+  profile_visible: true
 
 - first_name: "Goodnews"
   last_name: "Situ"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Oreoluwa"
   last_name: "Adedayo"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Aisha"
   last_name: "Abimbola"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Joshua"
   last_name: "Kehinde"
   track: "CTRI"
   photo: ""
+  profile_visible: true
 
 - first_name: "Ayodeji"
   last_name: "Omotayo"
   track: "CFK Fellowship"
   photo: ""
+  profile_visible: true
 
 - first_name: "Faruq"
   last_name: "Salahu"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Oluwapelumi"
   last_name: "Ajewole"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Ayofe Abdullahi"
   last_name: "Abdullahi"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true
 
 - first_name: "Janet"
   last_name: "Olatunji"
   track: "CFK Fellowship"
   photo: ""
+  profile_visible: true
 
 - first_name: "Precious"
   last_name: "Ajewole"
   track: "CTRI"
   photo: ""
+  profile_visible: true
 
 - first_name: "Princess"
   last_name: "Egbowon"
   track: "WikiQuestions"
   photo: ""
+  profile_visible: true

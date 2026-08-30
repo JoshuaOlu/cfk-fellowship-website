@@ -36,3 +36,6 @@ substack:  ""
 orcid:     "https://orcid.org/ 0009-0009-9225-6188"
 youtube:   ""
 tiktok:    "https://www.tiktok.com/@isadewumi"
+
+# ── CONSENT & VISIBILITY ─────────────────────────────
+profile_visible: true

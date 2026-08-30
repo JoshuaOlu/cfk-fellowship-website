@@ -42,6 +42,7 @@ COLUMNS = [
     'current_role', 'other_roles', 'timeline',
     'bio', 'statement',
     'linkedin', 'instagram', 'x', 'substack', 'orcid', 'youtube', 'tiktok',
+    'profile_visible',
 ]
 
 

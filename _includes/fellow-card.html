@@ -15,6 +15,8 @@
 {% assign last_i = f.last_name | slice: 0 %}
 {% assign initials = initials | append: last_i %}
 
+{% if f.profile_visible == true or f.profile_visible == "true" %}
+
 <div class="fellow-card {{ accent_class }} {{ status_class }}">
   <div class="fellow-card-inner">
 
@@ -54,3 +56,23 @@
 
   </div>
 </div>
+
+{% else %}
+
+<!-- Profile not shown: fellow has not yet given consent to display -->
+<div class="fellow-card fellow-card-private {{ accent_class }} {{ status_class }}">
+  <div class="fellow-card-inner fellow-card-inner-private">
+    <div class="fellow-card-top">
+      <div class="fellow-card-photo fellow-card-photo-private" title="Profile not yet available">
+        <span class="fellow-card-initials fellow-card-initials-private" aria-hidden="true">—</span>
+      </div>
+      <span class="level-badge level-badge-{{ level_class }}">{{ f.level }}</span>
+    </div>
+    <div class="fellow-card-name fellow-card-name-private">Fellow profile<br>not yet available</div>
+    <div class="fellow-card-private-note">
+      This Fellow has not yet shared their profile publicly.
+    </div>
+  </div>
+</div>
+
+{% endif %}

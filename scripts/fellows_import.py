@@ -114,6 +114,7 @@ ALL_COLUMNS = [
     'current_role', 'other_roles', 'timeline',
     'bio', 'statement',
     'linkedin', 'instagram', 'x', 'substack', 'orcid', 'youtube', 'tiktok',
+    'profile_visible',
 ]
 
 LIST_FIELDS = {'other_roles', 'timeline'}
@@ -191,6 +192,9 @@ def write_fellow(slug, data, dry_run=False):
         f'orcid:     "{data.get("orcid", "")}"',
         f'youtube:   "{data.get("youtube", "")}"',
         f'tiktok:    "{data.get("tiktok", "")}"',
+        f'',
+        f'# ── CONSENT & VISIBILITY ─────────────────────────────',
+        f'profile_visible: {str(data.get("profile_visible", True)).lower()}',
     ]
 
     content = '\n'.join(lines) + '\n'

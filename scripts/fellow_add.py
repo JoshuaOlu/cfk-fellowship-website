@@ -183,6 +183,7 @@ def interactive_mode():
     # Empty list fields
     data['other_roles'] = ''
     data['timeline']    = ''
+    data['profile_visible'] = False  # Default hidden; update once consent is given
 
     return slug, data
 
@@ -235,6 +236,7 @@ def args_mode(args):
         'statement':    '',
         'linkedin': '', 'instagram': '', 'x': '',
         'substack': '', 'orcid': '', 'youtube': '', 'tiktok': '',
+        'profile_visible': False,  # New fellows default to hidden until consent given
     }
     return slug, data
 

@@ -1240,3 +1240,83 @@ footer {
   transition: max-height 0.4s ease;
 }
 .earlier-cohorts-body.collapsed { max-height: 0; }
+
+/* ══════════════════════════════════════════════════════════════
+   PROFILE VISIBILITY / CONSENT — PRIVATE CARD STYLES
+══════════════════════════════════════════════════════════════ */
+
+/* Section heading count badge */
+.fellows-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.fellows-section-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: rgba(255,255,255,0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 99px;
+  padding: 0.15em 0.65em;
+  vertical-align: middle;
+}
+
+/* Private fellow card — muted, non-interactive */
+.fellow-card-private {
+  opacity: 0.7;
+}
+.fellow-card-inner-private {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 6px,
+    rgba(0,0,0,0.025) 6px,
+    rgba(0,0,0,0.025) 12px
+  );
+  cursor: default;
+}
+.fellow-card-photo-private {
+  background: var(--border);
+}
+.fellow-card-initials-private {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+.fellow-card-name-private {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.fellow-card-private-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 0.4rem;
+}
+
+/* Cohort card private placeholder */
+.cohort-card-private {
+  opacity: 0.6;
+}
+.cohort-card-photo-private {
+  background: var(--border);
+}
+.fellows-privacy-note-inline {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Privacy note below a section's grid */
+.fellows-privacy-note {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 560px;
+  font-style: italic;
+}

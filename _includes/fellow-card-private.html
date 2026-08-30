@@ -1,0 +1,30 @@
+{% assign count = include.count %}
+{% assign level = include.level %}
+{% assign level_class = level | downcase | replace: ' ', '-' %}
+
+<div class="fellow-card fellow-card-private card-{{ level_class }}">
+  <div class="fellow-card-inner fellow-card-inner-private">
+    <div class="fellow-card-top">
+      <div class="fellow-card-photo fellow-card-photo-private">
+        <span class="fellow-card-initials fellow-card-initials-private" aria-hidden="true">
+          {% if count == 1 %}—{% else %}+{{ count }}{% endif %}
+        </span>
+      </div>
+      <span class="level-badge level-badge-{{ level_class }}">{{ level }}</span>
+    </div>
+    <div class="fellow-card-name fellow-card-name-private">
+      {% if count == 1 %}
+        Fellow profile<br>not yet shared
+      {% else %}
+        {{ count }} Fellow profiles<br>not yet shared
+      {% endif %}
+    </div>
+    <div class="fellow-card-private-note">
+      {% if count == 1 %}
+        This Fellow hasn't shared their profile publicly yet.
+      {% else %}
+        These Fellows haven't shared their profiles publicly yet.
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -7,28 +7,59 @@ description: Meet the CFK Fellows — active contributors, alumni, and emeritus 
 {% assign all_fellows = site.data.fellows | sort %}
 {% assign autumn26 = site.data.autumn-2026-fellows %}
 
-<!-- Separate fellows by status and level -->
-{% assign senior_fellows    = "" | split: "" %}
-{% assign associate_fellows = "" | split: "" %}
-{% assign foundation_fellows= "" | split: "" %}
-{% assign principal_fellows = "" | split: "" %}
-{% assign alumni_fellows    = "" | split: "" %}
-{% assign emeritus_fellows  = "" | split: "" %}
+<!--
+  For each group we build TWO arrays:
+    [group]_fellows       — all fellows in this group (for accurate counts)
+    [group]_visible       — only those with profile_visible: true (for display)
+-->
+
+{% assign senior_fellows        = "" | split: "" %}
+{% assign senior_visible        = "" | split: "" %}
+{% assign associate_fellows     = "" | split: "" %}
+{% assign associate_visible     = "" | split: "" %}
+{% assign foundation_fellows    = "" | split: "" %}
+{% assign foundation_visible    = "" | split: "" %}
+{% assign principal_fellows     = "" | split: "" %}
+{% assign principal_visible     = "" | split: "" %}
+{% assign alumni_fellows        = "" | split: "" %}
+{% assign alumni_visible        = "" | split: "" %}
+{% assign emeritus_fellows      = "" | split: "" %}
+{% assign emeritus_visible      = "" | split: "" %}
 
 {% for pair in all_fellows %}
   {% assign f = pair[1] %}
   {% if f.status == "active" %}
-    {% if f.level == "Principal Fellow" %}{% assign principal_fellows = principal_fellows | push: f %}
-    {% elsif f.level == "Senior Fellow" %}{% assign senior_fellows = senior_fellows | push: f %}
-    {% elsif f.level == "Associate Fellow" %}{% assign associate_fellows = associate_fellows | push: f %}
-    {% elsif f.level == "Foundation Fellow" %}{% assign foundation_fellows = foundation_fellows | push: f %}
+    {% if f.level == "Principal Fellow" %}
+      {% assign principal_fellows = principal_fellows | push: f %}
+      {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign principal_visible = principal_visible | push: f %}{% endif %}
+    {% elsif f.level == "Senior Fellow" %}
+      {% assign senior_fellows = senior_fellows | push: f %}
+      {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign senior_visible = senior_visible | push: f %}{% endif %}
+    {% elsif f.level == "Associate Fellow" %}
+      {% assign associate_fellows = associate_fellows | push: f %}
+      {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign associate_visible = associate_visible | push: f %}{% endif %}
+    {% elsif f.level == "Foundation Fellow" %}
+      {% assign foundation_fellows = foundation_fellows | push: f %}
+      {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign foundation_visible = foundation_visible | push: f %}{% endif %}
     {% endif %}
   {% elsif f.status == "emeritus" %}
     {% assign emeritus_fellows = emeritus_fellows | push: f %}
+    {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign emeritus_visible = emeritus_visible | push: f %}{% endif %}
   {% elsif f.status == "alumni" %}
     {% assign alumni_fellows = alumni_fellows | push: f %}
+    {% if f.profile_visible == true or f.profile_visible == "true" %}{% assign alumni_visible = alumni_visible | push: f %}{% endif %}
   {% endif %}
 {% endfor %}
+
+<!-- Autumn 2026 cohort counts -->
+{% assign autumn26_total   = autumn26 | size %}
+{% assign autumn26_visible = "" | split: "" %}
+{% for person in autumn26 %}
+  {% if person.profile_visible == true or person.profile_visible == "true" %}
+    {% assign autumn26_visible = autumn26_visible | push: person %}
+  {% endif %}
+{% endfor %}
+{% assign autumn26_hidden = autumn26_total | minus: autumn26_visible.size %}
 
 <!-- ── PAGE HEADER ── -->
 <header class="page-header">
@@ -44,9 +75,12 @@ description: Meet the CFK Fellows — active contributors, alumni, and emeritus 
 
     <!-- ── CURRENT COHORT (Autumn 2026 — lighter treatment) ── -->
     <section class="fellows-section">
-      <div class="fellows-section-heading">Autumn 2026 Cohort · Foundation Fellows in Progress</div>
+      <div class="fellows-section-heading">Autumn 2026 Cohort · Foundation Fellows in Progress
+        <span class="fellows-section-count">{{ autumn26_total }}</span>
+      </div>
+
       <div class="cohort-card-grid">
-        {% for person in autumn26 %}
+        {% for person in autumn26_visible %}
         <div class="cohort-card">
           <div class="cohort-card-photo">
             {% if person.photo and person.photo != "" %}
@@ -59,73 +93,126 @@ description: Meet the CFK Fellows — active contributors, alumni, and emeritus 
           <div class="cohort-card-track">{{ person.track }}</div>
         </div>
         {% endfor %}
+
+        {% if autumn26_hidden > 0 %}
+        <div class="cohort-card cohort-card-private">
+          <div class="cohort-card-photo cohort-card-photo-private">
+            <span class="cohort-card-initials" style="opacity:0.35;">+{{ autumn26_hidden }}</span>
+          </div>
+          <div class="cohort-card-name" style="color: var(--muted); font-style: italic;">
+            {% if autumn26_hidden == 1 %}1 Fellow{% else %}{{ autumn26_hidden }} Fellows{% endif %}
+          </div>
+          <div class="cohort-card-track fellows-privacy-note-inline">Profiles not yet shared</div>
+        </div>
+        {% endif %}
       </div>
+
+      {% if autumn26_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ autumn26_hidden }} {% if autumn26_hidden == 1 %}member of this cohort has{% else %}members of this cohort have{% endif %} not yet shared {% if autumn26_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly — they are counted above and will appear here once they do.
+      </p>
+      {% endif %}
     </section>
 
     <!-- ── PRINCIPAL FELLOWS ── -->
     {% if principal_fellows.size > 0 %}
+    {% assign principal_hidden = principal_fellows.size | minus: principal_visible.size %}
     <section class="fellows-section">
-      <div class="fellows-section-heading">Principal Fellows</div>
-      <div class="fellows-grid">
-        {% for f in principal_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      <div class="fellows-section-heading">Principal Fellows
+        <span class="fellows-section-count">{{ principal_fellows.size }}</span>
       </div>
+      <div class="fellows-grid">
+        {% for f in principal_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% if principal_hidden > 0 %}{% include fellow-card-private.html count=principal_hidden level="Principal Fellow" %}{% endif %}
+      </div>
+      {% if principal_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ principal_hidden }} {% if principal_hidden == 1 %}Principal Fellow has{% else %}Principal Fellows have{% endif %} not yet shared {% if principal_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+      </p>
+      {% endif %}
     </section>
     {% endif %}
 
     <!-- ── SENIOR FELLOWS ── -->
     {% if senior_fellows.size > 0 %}
+    {% assign senior_hidden = senior_fellows.size | minus: senior_visible.size %}
     <section class="fellows-section">
-      <div class="fellows-section-heading">Senior Fellows</div>
-      <div class="fellows-grid">
-        {% for f in senior_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      <div class="fellows-section-heading">Senior Fellows
+        <span class="fellows-section-count">{{ senior_fellows.size }}</span>
       </div>
+      <div class="fellows-grid">
+        {% for f in senior_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% if senior_hidden > 0 %}{% include fellow-card-private.html count=senior_hidden level="Senior Fellow" %}{% endif %}
+      </div>
+      {% if senior_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ senior_hidden }} {% if senior_hidden == 1 %}Senior Fellow has{% else %}Senior Fellows have{% endif %} not yet shared {% if senior_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+      </p>
+      {% endif %}
     </section>
     {% endif %}
 
     <!-- ── ASSOCIATE FELLOWS ── -->
     {% if associate_fellows.size > 0 %}
+    {% assign associate_hidden = associate_fellows.size | minus: associate_visible.size %}
     <section class="fellows-section">
-      <div class="fellows-section-heading">Associate Fellows</div>
-      <div class="fellows-grid">
-        {% for f in associate_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      <div class="fellows-section-heading">Associate Fellows
+        <span class="fellows-section-count">{{ associate_fellows.size }}</span>
       </div>
+      <div class="fellows-grid">
+        {% for f in associate_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% if associate_hidden > 0 %}{% include fellow-card-private.html count=associate_hidden level="Associate Fellow" %}{% endif %}
+      </div>
+      {% if associate_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ associate_hidden }} {% if associate_hidden == 1 %}Associate Fellow has{% else %}Associate Fellows have{% endif %} not yet shared {% if associate_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+      </p>
+      {% endif %}
     </section>
     {% endif %}
 
     <!-- ── FOUNDATION FELLOWS (graduated, continuing) ── -->
     {% if foundation_fellows.size > 0 %}
+    {% assign foundation_hidden = foundation_fellows.size | minus: foundation_visible.size %}
     <section class="fellows-section">
-      <div class="fellows-section-heading">Foundation Fellows</div>
-      <div class="fellows-grid">
-        {% for f in foundation_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+      <div class="fellows-section-heading">Foundation Fellows
+        <span class="fellows-section-count">{{ foundation_fellows.size }}</span>
       </div>
+      <div class="fellows-grid">
+        {% for f in foundation_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% if foundation_hidden > 0 %}{% include fellow-card-private.html count=foundation_hidden level="Foundation Fellow" %}{% endif %}
+      </div>
+      {% if foundation_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ foundation_hidden }} {% if foundation_hidden == 1 %}Foundation Fellow has{% else %}Foundation Fellows have{% endif %} not yet shared {% if foundation_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+      </p>
+      {% endif %}
     </section>
     {% endif %}
 
     <!-- ── EMERITUS FELLOWS ── -->
     {% if emeritus_fellows.size > 0 %}
+    {% assign emeritus_hidden = emeritus_fellows.size | minus: emeritus_visible.size %}
     <section class="fellows-section">
-      <div class="fellows-section-heading">Emeritus Fellows</div>
+      <div class="fellows-section-heading">Emeritus Fellows
+        <span class="fellows-section-count">{{ emeritus_fellows.size }}</span>
+      </div>
       <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2rem;max-width:560px;">Fellows who reached Senior or Principal level and made an extended contribution before stepping back. The title is permanent.</p>
       <div class="fellows-grid">
-        {% for f in emeritus_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% for f in emeritus_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+        {% if emeritus_hidden > 0 %}{% include fellow-card-private.html count=emeritus_hidden level="Emeritus Fellow" %}{% endif %}
       </div>
-    </section>
-    {% endif %}
-
-    <!-- ── EMERITUS FELLOWS ── -->
-    {% if emeritus_fellows.size > 0 %}
-    <section class="fellows-section">
-      <div class="fellows-section-heading">Emeritus Fellows</div>
-      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2rem;max-width:560px;">Fellows who reached Senior or Principal level and made an extended contribution before stepping back. The title is permanent — a record of serious long-term service.</p>
-      <div class="fellows-grid">
-        {% for f in emeritus_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
-      </div>
+      {% if emeritus_hidden > 0 %}
+      <p class="fellows-privacy-note">
+        {{ emeritus_hidden }} {% if emeritus_hidden == 1 %}Emeritus Fellow has{% else %}Emeritus Fellows have{% endif %} not yet shared {% if emeritus_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+      </p>
+      {% endif %}
     </section>
     {% endif %}
 
     <!-- ── ALUMNI — collapsible ── -->
     {% if alumni_fellows.size > 0 %}
+    {% assign alumni_hidden = alumni_fellows.size | minus: alumni_visible.size %}
     <section class="fellows-section">
 
       <button class="alumni-toggle-btn" aria-expanded="false" aria-controls="alumni-grid"
@@ -139,8 +226,14 @@ description: Meet the CFK Fellows — active contributors, alumni, and emeritus 
       <div class="alumni-collapsible collapsed" id="alumni-grid">
         <p style="font-size:0.9rem;color:var(--muted);margin:1.5rem 0 2rem;max-width:560px;">Fellows who completed the Foundation Cohort and moved on. Their contribution is part of the Fellowship's story — their profiles remain permanent.</p>
         <div class="fellows-grid">
-          {% for f in alumni_fellows %}{% include fellow-card.html fellow=f %}{% endfor %}
+          {% for f in alumni_visible %}{% include fellow-card.html fellow=f %}{% endfor %}
+          {% if alumni_hidden > 0 %}{% include fellow-card-private.html count=alumni_hidden level="Alumni Fellow" %}{% endif %}
         </div>
+        {% if alumni_hidden > 0 %}
+        <p class="fellows-privacy-note" style="margin-top:1.5rem;">
+          {{ alumni_hidden }} {% if alumni_hidden == 1 %}Alumni Fellow has{% else %}Alumni Fellows have{% endif %} not yet shared {% if alumni_hidden == 1 %}their profile{% else %}their profiles{% endif %} publicly.
+        </p>
+        {% endif %}
       </div>
 
     </section>

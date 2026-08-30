@@ -35,3 +35,6 @@ substack:  ""
 orcid:     ""
 youtube:   ""
 tiktok:    ""
+
+# ── CONSENT & VISIBILITY ─────────────────────────────
+profile_visible: true
